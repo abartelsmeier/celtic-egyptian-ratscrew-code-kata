@@ -27,10 +27,8 @@ namespace CelticEgyptianRatscrewKata.Tests
                             new Card(Suit.Diamonds, Rank.Two)
 
                         };
-
             Stack snapStack = new Stack(cards);
-
-
+            
             var result = standardSnap.IsSnap(snapStack);
 
             Assert.IsTrue(result);
@@ -54,6 +52,21 @@ namespace CelticEgyptianRatscrewKata.Tests
             var result = standardSnap.IsSnap(snapStack);
 
             Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void OneCardInStackIsNotValidSnap()
+        {
+            var standardSnap = new StandardSnap();
+            var cards = new List<Card>
+                        {
+                            new Card(Suit.Clubs, Rank.Ace)
+                        };
+            Stack snapStack = new Stack(cards);
+
+            var result = standardSnap.IsSnap(snapStack);
+
+            Assert.IsFalse(result);
         }
     }
 }
