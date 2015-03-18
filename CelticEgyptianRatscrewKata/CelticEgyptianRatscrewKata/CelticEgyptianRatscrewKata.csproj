@@ -46,8 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rank.cs" />
     <Compile Include="Stack.cs" />
+    <Compile Include="StandardSnap.cs" />
     <Compile Include="Tests\StackTests.cs" />
     <Compile Include="Suit.cs" />
+    <Compile Include="Tests\StandardSnapTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
