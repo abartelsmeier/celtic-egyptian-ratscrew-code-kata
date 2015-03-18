@@ -36,5 +36,23 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             Assert.IsTrue(result);
         }
+
+        [Test]
+        public void SnapValidatorReturnsFalseWhenSnapRuleReturnsFalse()
+        {
+            var snapRuleMock = new Mock<ISnapRule>();
+            List<ISnapRule> rules = new List<ISnapRule>
+                                    {
+                                        snapRuleMock.Object
+                                    };
+            var snapValidator = new SnapValidator(rules);
+            snapRuleMock.Setup(x => x.IsSnap(It.IsAny<Stack>())).Returns(false);
+
+            IEnumerable<Card> cards = new List<Card>();
+            Stack stack = new Stack(cards);
+            var result = snapValidator.IsSnap(stack);
+
+            Assert.IsFalse(result);
+        }
     }
 }
