@@ -8,11 +8,11 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void EmptyStackIsNotAValidSnap()
         {
-            var sandwichSnap = new SandwichSnap();
+            var snapRule = new SandwichSnap();
             var cards = new List<Card>();
             Stack emptyStack = new Stack(cards);
 
-            var result = sandwichSnap.IsSnap(emptyStack);
+            var result = snapRule.IsSnap(emptyStack);
 
             Assert.IsFalse(result);
         }
@@ -20,7 +20,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void ASandwichOfTwoCardsOfSameRankIsValidSnap()
         {
-            var standardSnap = new SandwichSnap();
+            var snapRule = new SandwichSnap();
             var cards = new List<Card>
                         {
                             new Card(Suit.Clubs, Rank.Ace),
@@ -30,7 +30,7 @@ namespace CelticEgyptianRatscrewKata.Tests
                         };
             Stack snapStack = new Stack(cards);
 
-            var result = standardSnap.IsSnap(snapStack);
+            var result = snapRule.IsSnap(snapStack);
 
             Assert.IsTrue(result);
 
@@ -39,7 +39,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void SandwichSnapInMiddleOfStackIsValidSnap()
         {
-            var standardSnap = new SandwichSnap();
+            var snapRule = new SandwichSnap();
             var cards = new List<Card>
                         {
                             new Card(Suit.Hearts, Rank.Ace),
@@ -50,7 +50,7 @@ namespace CelticEgyptianRatscrewKata.Tests
                         };
             Stack snapStack = new Stack(cards);
 
-            var result = standardSnap.IsSnap(snapStack);
+            var result = snapRule.IsSnap(snapStack);
 
             Assert.IsTrue(result);
         }
@@ -58,7 +58,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void ThreeCardsInStackWithNoSandwichSnapNotValidSnap()
         {
-            var standardSnap = new SandwichSnap();
+            var snapRule = new SandwichSnap();
             var cards = new List<Card>
                         {
                             new Card(Suit.Clubs, Rank.Ace),
@@ -67,7 +67,7 @@ namespace CelticEgyptianRatscrewKata.Tests
                         };
             Stack snapStack = new Stack(cards);
 
-            var result = standardSnap.IsSnap(snapStack);
+            var result = snapRule.IsSnap(snapStack);
 
             Assert.IsFalse(result);
         }
