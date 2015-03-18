@@ -16,5 +16,25 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             Assert.IsFalse(result);
         }
+
+        [Test]
+        public void TwoCardsSameRankIsValidSnap()
+        {
+            var standardSnap = new StandardSnap();
+            var cards = new List<Card>
+                        {
+                            new Card(Suit.Clubs, Rank.Two),
+                            new Card(Suit.Diamonds, Rank.Two)
+
+                        };
+
+            Stack snapStack = new Stack(cards);
+
+
+            var result = standardSnap.IsSnap(snapStack);
+
+            Assert.IsTrue(result);
+
+        }
     }
 }
