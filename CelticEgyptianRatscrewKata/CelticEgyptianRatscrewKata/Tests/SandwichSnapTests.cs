@@ -35,5 +35,41 @@ namespace CelticEgyptianRatscrewKata.Tests
             Assert.IsTrue(result);
 
         }
+
+        [Test]
+        public void SandwichSnapInMiddleOfStackIsValidSnap()
+        {
+            var standardSnap = new SandwichSnap();
+            var cards = new List<Card>
+                        {
+                            new Card(Suit.Hearts, Rank.Ace),
+                            new Card(Suit.Clubs, Rank.Two),
+                            new Card(Suit.Clubs, Rank.Three),
+                            new Card(Suit.Diamonds, Rank.Two),
+                            new Card(Suit.Clubs, Rank.Four)
+                        };
+            Stack snapStack = new Stack(cards);
+
+            var result = standardSnap.IsSnap(snapStack);
+
+            Assert.IsTrue(result);
+        }
+        
+        [Test]
+        public void ThreeCardsInStackWithNoSandwichSnapNotValidSnap()
+        {
+            var standardSnap = new SandwichSnap();
+            var cards = new List<Card>
+                        {
+                            new Card(Suit.Clubs, Rank.Ace),
+                            new Card(Suit.Hearts, Rank.Two),
+                            new Card(Suit.Diamonds, Rank.Three)
+                        };
+            Stack snapStack = new Stack(cards);
+
+            var result = standardSnap.IsSnap(snapStack);
+
+            Assert.IsFalse(result);
+        }
     }
 }
