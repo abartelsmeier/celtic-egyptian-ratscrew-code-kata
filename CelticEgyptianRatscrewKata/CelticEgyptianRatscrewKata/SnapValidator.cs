@@ -14,6 +14,10 @@ namespace CelticEgyptianRatscrewKata
         
         public bool IsSnap(Stack stack)
         {
+            foreach (ISnapRule rule in m_Rules)
+            {
+                if (rule.IsSnap(stack)) return true;
+            }
            return false;
         }
     }
