@@ -2,7 +2,7 @@
 
 namespace CelticEgyptianRatscrewKata
 {
-    public class StandardSnap
+    public class StandardSnap: ISnapRule
     {
         public bool IsSnap(Stack stack)
         {

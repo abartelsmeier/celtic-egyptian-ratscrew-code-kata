@@ -1,6 +1,6 @@
 ﻿namespace CelticEgyptianRatscrewKata
 {
-    public class SandwichSnap
+    public class SandwichSnap : ISnapRule
     {
         public bool IsSnap(Stack stack)
         {
