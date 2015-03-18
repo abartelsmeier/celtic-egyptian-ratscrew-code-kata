@@ -15,6 +15,23 @@ namespace CelticEgyptianRatscrewKata.Tests
             var result = snapRule.IsSnap(emptyStack);
 
             Assert.IsFalse(result);
-        } 
+        }
+
+        [Test]
+        public void SingleDarkQueenIsValidSnap()
+        {
+            var snapRule = new DarkQueenSnap();
+            var cards = new List<Card>
+                        {
+                            new Card(Suit.Spades, Rank.Queen)
+
+                        };
+            Stack snapStack = new Stack(cards);
+
+            var result = snapRule.IsSnap(snapStack);
+
+            Assert.IsTrue(result);
+
+        }
     }
 }
