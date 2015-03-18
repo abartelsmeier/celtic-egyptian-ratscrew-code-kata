@@ -45,8 +45,10 @@
     <Compile Include="Card.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rank.cs" />
+    <Compile Include="SandwichSnap.cs" />
     <Compile Include="Stack.cs" />
     <Compile Include="StandardSnap.cs" />
+    <Compile Include="Tests\SandwichSnapTests.cs" />
     <Compile Include="Tests\StackTests.cs" />
     <Compile Include="Suit.cs" />
     <Compile Include="Tests\StandardSnapTests.cs" />
