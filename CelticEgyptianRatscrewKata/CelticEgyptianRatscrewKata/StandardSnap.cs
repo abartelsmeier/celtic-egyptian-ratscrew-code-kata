@@ -4,7 +4,7 @@
     {
         public bool IsSnap(Stack stack)
         {
-            return true;
+            return false;
         }
     }
 }
