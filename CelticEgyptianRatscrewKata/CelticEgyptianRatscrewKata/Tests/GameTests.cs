@@ -49,5 +49,24 @@ namespace CelticEgyptianRatscrewKata.Tests
             Game game = new Game(players, deck);
             Assert.That(game, Is.TypeOf(typeof(Game)));
         }
+
+        [Test]
+        public void ShouldCreateMultipleCardDeckAndMultiplePlayersAndPassToGame()
+        {
+            Cards deck = new Cards(new List<Card> 
+                            {
+                                new Card(Suit.Clubs, Rank.Ace),
+                                new Card(Suit.Diamonds, Rank.Two),
+                                new Card(Suit.Hearts, Rank.Three)
+                            });
+            List<Player> players = new List<Player>
+                            {
+                                new Player(),
+                                new Player(),
+                                new Player()
+                            };
+            Game game = new Game(players, deck);
+            Assert.That(game, Is.TypeOf(typeof(Game)));
+        }
     }
 }
