@@ -68,5 +68,11 @@ namespace CelticEgyptianRatscrewKata.Tests
             Game game = new Game(players, deck);
             Assert.That(game, Is.TypeOf(typeof(Game)));
         }
+
+        [Test]
+        public void ShouldDealGameDeckToPlayers()
+        {
+            Assert.Fail();
+        }
     }
 }
