@@ -1,0 +1,6 @@
+﻿namespace CelticEgyptianRatscrewKata
+{
+    interface IPlayer
+    {
+    }
+}

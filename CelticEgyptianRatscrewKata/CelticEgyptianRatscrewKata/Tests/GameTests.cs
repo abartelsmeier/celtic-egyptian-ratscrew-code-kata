@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using Moq;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,7 +18,10 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void ShouldAddPlayerToGame()
         {
-            Assert.That(false, Is.True);
+            Game game = new Game();
+            var player = new Player();
+            game.AddPlayer(player);
+            Assert.Pass();
         }
     }
 }
