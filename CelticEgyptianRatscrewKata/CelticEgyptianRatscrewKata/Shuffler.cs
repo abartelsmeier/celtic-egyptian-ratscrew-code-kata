@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CelticEgyptianRatscrewKata
 {
-    public class Shuffler
+    public class Shuffler : IShuffler
     {
         private readonly IRandomNumberGenerator m_RandomNumberGenerator;
 

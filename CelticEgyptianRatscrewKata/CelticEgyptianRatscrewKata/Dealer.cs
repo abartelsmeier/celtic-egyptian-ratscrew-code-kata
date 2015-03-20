@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace CelticEgyptianRatscrewKata
 {
-    public class Dealer
+    public class Dealer : IDealer
     {
-        public List<Cards> Deal(int numberOfHands, Cards deck)
+        public IEnumerable<Cards> Deal(int numberOfHands, Cards deck)
         {
             var hands = new List<Cards>();
 
