@@ -72,7 +72,50 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void ShouldDealGameDeckToPlayers()
         {
-            Assert.Fail();
+            Cards deck = new Cards(new List<Card> 
+                            {
+                                AceOfClubs(),
+                                TwoOfClubs(),
+                                ThreeOfClubs()
+                            });
+            var player1 = new Player();
+            var player2 = new Player();
+            var player3 = new Player();
+            List<Player> players = new List<Player>
+                            {
+                                player1,
+                                player2,
+                                player3
+                            };
+            Game game = new Game(players, deck);
+            var hand1 = new Cards(new List<Card> { AceOfClubs() });
+            var hand2 = new Cards(new List<Card> { TwoOfClubs() });
+            var hand3 = new Cards(new List<Card> { ThreeOfClubs() });
+            var expectedPlayerHands = new Dictionary<IPlayer, Cards>
+                            {
+                                {player1,  hand1},
+                                {player2,  hand2},
+                                {player3,  hand3}
+                            };
+
+            game.DealDeck();
+
+            Assert.That((Dictionary<IPlayer, Cards>)game.PlayersWithHands, Is.EqualTo(expectedPlayerHands));
+        }
+
+        private static Card AceOfClubs()
+        {
+            return new Card(Suit.Clubs, Rank.Ace);
+        }
+
+        private static Card TwoOfClubs()
+        {
+            return new Card(Suit.Clubs, Rank.Two);
+        }
+
+        private static Card ThreeOfClubs()
+        {
+            return new Card(Suit.Clubs, Rank.Three);
         }
     }
 }
