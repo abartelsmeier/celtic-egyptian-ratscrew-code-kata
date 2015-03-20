@@ -28,7 +28,7 @@ namespace CelticEgyptianRatscrewKata
             m_PlayersWithHands = new Dictionary<IPlayer, Cards>();
             foreach(var player in players)
             {
-                m_PlayersWithHands.Add( player, new Cards(new List<Card>()) );
+                m_PlayersWithHands.Add(player, null);
             }
             m_Deck = deck;
             m_Dealer = new Dealer();
