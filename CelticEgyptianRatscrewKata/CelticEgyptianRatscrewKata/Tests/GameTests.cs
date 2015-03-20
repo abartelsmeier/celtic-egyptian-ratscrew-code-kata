@@ -13,5 +13,11 @@ namespace CelticEgyptianRatscrewKata.Tests
             Game game = new Game();
             Assert.That(game, Is.TypeOf(typeof(Game)));
         }
+
+        [Test]
+        public void ShouldAddPlayerToGame()
+        {
+            Assert.That(false, Is.True);
+        }
     }
 }
