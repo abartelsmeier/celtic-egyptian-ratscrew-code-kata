@@ -10,7 +10,8 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void ShouldCreateGame()
         {
-            Assert.That(false, Is.True);
+            Game game = new Game();
+            Assert.That(game, Is.TypeOf(typeof(Game)));
         }
     }
 }
