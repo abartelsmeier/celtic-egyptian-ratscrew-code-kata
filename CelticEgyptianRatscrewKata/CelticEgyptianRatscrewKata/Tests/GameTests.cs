@@ -23,5 +23,12 @@ namespace CelticEgyptianRatscrewKata.Tests
             game.AddPlayer(player);
             Assert.Pass();
         }
+        
+        [Test]
+        public void ShouldCreateEmptyDeckAndPassToGame()
+        {
+            Cards deck = new Cards(new List<Card>());
+            Assert.Fail();
+        }
     }
 }
