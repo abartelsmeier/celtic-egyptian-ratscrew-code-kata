@@ -31,5 +31,14 @@ namespace CelticEgyptianRatscrewKata.Tests
             Game game = new Game(deck);            
             Assert.That(game, Is.TypeOf(typeof(Game)));
         }
+
+        [Test]
+        public void ShouldCreateEmptyDeckAndPlayersAndPassToGame()
+        {
+            Cards deck = new Cards(new List<Card>());
+            List<Player> players = new List<Player>();
+            Game game = new Game(players, deck);
+            Assert.That(game, Is.TypeOf(typeof(Game)));
+        }
     }
 }
