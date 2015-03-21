@@ -111,6 +111,8 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             game.Shuffle();
             game.Deal();
+
+            Assert.That(game.PlayersWithHands.Values.Sum(x => x.Count()), Is.EqualTo(deck.Count()));
         }
     }
 }
