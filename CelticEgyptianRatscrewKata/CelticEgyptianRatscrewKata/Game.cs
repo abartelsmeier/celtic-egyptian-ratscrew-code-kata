@@ -35,7 +35,7 @@ namespace CelticEgyptianRatscrewKata
         public void Deal()
         {
             int totalPlayers = m_PlayersWithHands.Count;
-            List<Cards> hands = (List<Cards>)m_Dealer.Deal(totalPlayers, m_Deck);
+            List<Cards> hands = (List<Cards>)m_Dealer.Deal(totalPlayers, new Cards(m_Deck));
             for (int i = 0; i < totalPlayers; ++i)
             {
                 m_PlayersWithHands[m_PlayersWithHands.ElementAt(i).Key] = hands.ElementAt(i);
