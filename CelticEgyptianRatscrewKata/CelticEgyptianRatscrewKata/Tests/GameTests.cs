@@ -98,5 +98,19 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             Assert.AreEqual((Dictionary<IPlayer, Cards>)game.PlayersWithHands, expectedPlayerHands);
         }
+
+        [Test]
+        public void ShuffleAndDealWholeGameDeck()
+        {
+            Cards deck = new Cards(GameTestVariables.WholeDeck());
+            var player1 = new Player();
+            var player2 = new Player();
+            var player3 = new Player();
+            List<Player> players = new List<Player> { player1, player2, player3 };
+            Game game = new Game(players, deck);
+
+            game.Shuffle();
+            game.Deal();
+        }
     }
 }
