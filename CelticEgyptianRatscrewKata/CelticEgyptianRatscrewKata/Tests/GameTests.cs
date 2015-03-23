@@ -98,6 +98,7 @@ namespace CelticEgyptianRatscrewKata.Tests
                                 player1
                             };
             Game game = new Game(players, deck);
+            game.Start();
 
             game.PlayCard(player1);
 
