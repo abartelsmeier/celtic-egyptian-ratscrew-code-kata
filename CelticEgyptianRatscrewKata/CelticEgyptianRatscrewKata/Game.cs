@@ -10,9 +10,9 @@ namespace CelticEgyptianRatscrewKata
         IDealer m_Dealer;
         IShuffler m_Shuffler;
 
-        public IDictionary<IPlayer, Cards> PlayersWithHands
+        public Cards Deck
         {
-            get { return m_PlayersWithHands; }
+            get { return m_Deck; }
         }
 
         public Game(IEnumerable<IPlayer> players, Cards deck)
@@ -27,13 +27,10 @@ namespace CelticEgyptianRatscrewKata
             m_Shuffler = new Shuffler();
         }
         
-        public void Shuffle()
+        public void Start()
         {
             m_Deck = m_Shuffler.Shuffle(m_Deck);
-        }
 
-        public void Deal()
-        {
             int totalPlayers = m_PlayersWithHands.Count;
             List<Cards> hands = (List<Cards>)m_Dealer.Deal(totalPlayers, new Cards(m_Deck));
             for (int i = 0; i < totalPlayers; ++i)

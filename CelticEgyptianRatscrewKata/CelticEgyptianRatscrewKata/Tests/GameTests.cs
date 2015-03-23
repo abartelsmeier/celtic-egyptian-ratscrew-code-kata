@@ -7,7 +7,7 @@ namespace CelticEgyptianRatscrewKata.Tests
     class GameTests
     {
         [Test]
-        public void CreateGameWithEmptyCardsAndPlayers()
+        public void GameWithEmptyCardsAndPlayers()
         {
             Cards deck = new Cards(new List<Card>());
             List<Player> players = new List<Player>();
@@ -16,16 +16,16 @@ namespace CelticEgyptianRatscrewKata.Tests
         }
 
         [Test]
-        public void CreateGameWithSingleCardsAndSinglePlayer()
+        public void GameWithSingleCardsAndSinglePlayer()
         {
             Cards deck = new Cards(new List<Card> { GameTestVariables.AceOfClubs() });
-            List<Player> players = new List<Player> { new Player() };
+            List<Player> players = new List<Player> { new Player("Player 1") };
 
             Game game = new Game(players, deck);
         }
 
         [Test]
-        public void CreateGameWithMultipleCardsAndMultiplePlayers()
+        public void GameWithMultipleCardsAndMultiplePlayers()
         {
             Cards deck = new Cards(new List<Card> 
                             {
@@ -35,102 +35,32 @@ namespace CelticEgyptianRatscrewKata.Tests
                             });
             List<Player> players = new List<Player>
                             {
-                                new Player(),
-                                new Player(),
-                                new Player()
+                                new Player("Player 1"),
+                                new Player("Player 2"),
+                                new Player("Player 3")
                             };
 
             Game game = new Game(players, deck);
         }
 
         [Test]
-        public void DealGameDeckToPlayers()
+        public void GameStartShufflesDeck()
         {
-            Cards deck = new Cards(new List<Card>
+            Cards deck = new Cards(new List<Card> 
                             {
                                 GameTestVariables.AceOfClubs(),
                                 GameTestVariables.TwoOfClubs(),
                                 GameTestVariables.ThreeOfClubs()
                             });
-            var player1 = new Player();
-            var player2 = new Player();
-            var player3 = new Player();
-            List<Player> players = new List<Player> { player1, player2, player3 };
-            Game game = new Game(players, deck);
-            var hand1 = new Cards(new List<Card> { GameTestVariables.AceOfClubs() });
-            var hand2 = new Cards(new List<Card> { GameTestVariables.TwoOfClubs() });
-            var hand3 = new Cards(new List<Card> { GameTestVariables.ThreeOfClubs() });
-            var expectedPlayerHands = new Dictionary<IPlayer, Cards> {
-                                {player1,  hand1},
-                                {player2,  hand2},
-                                {player3,  hand3}
-                            };
-
-            game.Deal();
-
-            Assert.AreEqual((Dictionary<IPlayer, Cards>)game.PlayersWithHands, expectedPlayerHands);
-        }
-
-        [Test]
-        public void DealShuffledGameDeckToPlayers()
-        {
-            Cards deck = new Cards(new List<Card>
+            List<Player> players = new List<Player>
                             {
-                                GameTestVariables.TwoOfClubs(),
-                                GameTestVariables.ThreeOfClubs(),
-                                GameTestVariables.AceOfClubs()
-                            });
-            var player1 = new Player();
-            var player2 = new Player();
-            var player3 = new Player();
-            List<Player> players = new List<Player> { player1, player2, player3 };
-            Game game = new Game(players, deck);
-            var hand1 = new Cards(new List<Card> { GameTestVariables.TwoOfClubs() });
-            var hand2 = new Cards(new List<Card> { GameTestVariables.ThreeOfClubs() });
-            var hand3 = new Cards(new List<Card> { GameTestVariables.AceOfClubs() });
-            var expectedPlayerHands = new Dictionary<IPlayer, Cards> {
-                                {player1,  hand1},
-                                {player2,  hand2},
-                                {player3,  hand3}
+                                new Player("Player 1"),
+                                new Player("Player 2"),
+                                new Player("Player 3")
                             };
-
-            game.Deal();
-
-            Assert.AreEqual((Dictionary<IPlayer, Cards>)game.PlayersWithHands, expectedPlayerHands);
-        }
-
-        [Test]
-        public void ShuffleAndDealWholeGameDeck()
-        {
-            Cards deck = new Cards(GameTestVariables.WholeDeck());
-            var player1 = new Player();
-            var player2 = new Player();
-            var player3 = new Player();
-            List<Player> players = new List<Player> { player1, player2, player3 };
             Game game = new Game(players, deck);
 
-            game.Shuffle();
-            game.Deal();
-
-            Assert.That(game.PlayersWithHands.Values.Sum(x => x.Count()), Is.EqualTo(deck.Count()));
-        }
-
-        [Test]
-        public void ShuffleAndDealWholeGameDeckTwice()
-        {
-            Cards deck = new Cards(GameTestVariables.WholeDeck());
-            var player1 = new Player();
-            var player2 = new Player();
-            var player3 = new Player();
-            List<Player> players = new List<Player> { player1, player2, player3 };
-            Game game = new Game(players, deck);
-
-            game.Shuffle();
-            game.Deal();
-            game.Shuffle();
-            game.Deal();
-
-            Assert.That(game.PlayersWithHands.Values.Sum(x => x.Count()), Is.EqualTo(deck.Count()));
+            game.Start();
         }
     }
 }
