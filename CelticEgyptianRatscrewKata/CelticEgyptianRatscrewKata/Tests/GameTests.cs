@@ -62,5 +62,27 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             game.Start();
         }
+
+        [Test]
+        public void GameStartDealsDeck()
+        {
+            Cards deck = new Cards(new List<Card> 
+                            {
+                                GameTestVariables.AceOfClubs(),
+                                GameTestVariables.TwoOfClubs(),
+                                GameTestVariables.ThreeOfClubs()
+                            });
+            List<Player> players = new List<Player>
+                            {
+                                new Player("Player 1"),
+                                new Player("Player 2"),
+                                new Player("Player 3")
+                            };
+            Game game = new Game(players, deck);
+
+            game.Start();
+
+            Assert.IsTrue(game.DeckContainsAllCardsIn(deck));
+        }
     }
 }
