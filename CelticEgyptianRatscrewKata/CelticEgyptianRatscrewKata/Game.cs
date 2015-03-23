@@ -38,5 +38,15 @@ namespace CelticEgyptianRatscrewKata
                 m_PlayersWithHands[m_PlayersWithHands.ElementAt(i).Key] = hands.ElementAt(i);
             }
         }
+
+        public bool DeckContainsAllCardsIn(Cards cards)
+        {
+            Cards cardsInHands = new Cards(m_PlayersWithHands.Values.SelectMany(x => x)
+                .OrderBy(c => c.Suit)
+                .ThenBy(c => c.Rank));
+            Cards expectedCards = new Cards(cards.OrderBy(c => c.Suit).ThenBy(c => c.Rank));
+
+            return cardsInHands.SequenceEqual(expectedCards);
+        }
     }
 }
