@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CelticEgyptianRatscrewKata.SnapRules;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CelticEgyptianRatscrewKata
@@ -10,6 +11,8 @@ namespace CelticEgyptianRatscrewKata
         Cards m_Stack;
         IDealer m_Dealer;
         IShuffler m_Shuffler;
+        ISnapValidator m_SnapValidator;
+        List<IRule> m_Rules;
 
         public Cards Deck
         {
@@ -31,6 +34,13 @@ namespace CelticEgyptianRatscrewKata
             m_Deck = deck;
             m_Dealer = new Dealer();
             m_Shuffler = new Shuffler();
+            m_SnapValidator = new SnapValidator();
+            m_Rules = new List<IRule>
+            {
+                new StandardSnapRule(),
+                new SandwichSnapRule(),
+                new DarkQueenSnapRule()
+            };
         }
         
         public void Start()
@@ -52,6 +62,11 @@ namespace CelticEgyptianRatscrewKata
                 Card card = m_PlayersWithHands[player].Pop();
                 Stack.AddToTop(card);
             }                
+        }
+
+        public bool AttemptSnap(IPlayer player)
+        {
+            return m_SnapValidator.CanSnap(m_Stack, m_Rules);
         }
 
         public bool DeckContainsAllCardsIn(Cards cards)

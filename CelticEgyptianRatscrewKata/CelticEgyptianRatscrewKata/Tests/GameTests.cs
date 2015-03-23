@@ -106,7 +106,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         }
 
         [Test]
-        public void GameAttemptSnap()
+        public void GameAttemptSnapOnInvalidStack()
         {
             Cards deck = new Cards(new List<Card> 
                             {
@@ -121,9 +121,9 @@ namespace CelticEgyptianRatscrewKata.Tests
             game.Start();
             game.PlayCard(player1);
 
-            game.AttemptSnap(player1);
+            bool result = game.AttemptSnap(player1);
 
-            Assert.That(game.Stack, Is.EqualTo(deck));
+            Assert.That(result, Is.False);
         }
     }
 }
