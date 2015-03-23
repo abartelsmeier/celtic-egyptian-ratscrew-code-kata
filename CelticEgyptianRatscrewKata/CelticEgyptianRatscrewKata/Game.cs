@@ -13,7 +13,7 @@ namespace CelticEgyptianRatscrewKata
         IShuffler m_Shuffler;
         ISnapValidator m_SnapValidator;
         List<IRule> m_Rules;
-
+        
         public Cards Deck
         {
             get { return m_Deck; }
@@ -66,8 +66,18 @@ namespace CelticEgyptianRatscrewKata
 
         public bool AttemptSnap(IPlayer player)
         {
-            return m_SnapValidator.CanSnap(m_Stack, m_Rules);
+            if (m_SnapValidator.CanSnap(m_Stack, m_Rules))
+            {
+                while (m_Stack.HasCards)
+                {
+                    m_PlayersWithHands[player].AddToTop(m_Stack.Pop());
+                }
+                return true;
+            }
+            return false;
         }
+
+
 
         public bool DeckContainsAllCardsIn(Cards cards)
         {

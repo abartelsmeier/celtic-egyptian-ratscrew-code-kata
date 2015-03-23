@@ -13,6 +13,11 @@ namespace CelticEgyptianRatscrewKata.Tests
             return new Card(Suit.Clubs, Rank.Ace);
         }
 
+        public static Card AceOfDiamonds()
+        {
+            return new Card(Suit.Diamonds, Rank.Ace);
+        }
+        
         public static Card TwoOfClubs()
         {
             return new Card(Suit.Clubs, Rank.Two);
