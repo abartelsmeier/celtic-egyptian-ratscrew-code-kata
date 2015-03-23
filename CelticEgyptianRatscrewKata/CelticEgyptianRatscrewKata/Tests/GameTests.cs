@@ -104,5 +104,26 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             Assert.That(game.Stack, Is.EqualTo(deck));
         }
+
+        [Test]
+        public void GameAttemptSnap()
+        {
+            Cards deck = new Cards(new List<Card> 
+                            {
+                                GameTestVariables.AceOfClubs()
+                            });
+            var player1 = new Player("Player 1");
+            List<Player> players = new List<Player>
+                            {
+                                player1
+                            };
+            Game game = new Game(players, deck);
+            game.Start();
+            game.PlayCard(player1);
+
+            game.AttemptSnap(player1);
+
+            Assert.That(game.Stack, Is.EqualTo(deck));
+        }
     }
 }
