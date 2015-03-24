@@ -174,7 +174,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             IPlayer winner = game.IsWinner();
 
-            Assert.That(winner, Is.Not.EqualTo(null));
+            Assert.That(winner, Is.EqualTo(player1));
         }
     }
 }

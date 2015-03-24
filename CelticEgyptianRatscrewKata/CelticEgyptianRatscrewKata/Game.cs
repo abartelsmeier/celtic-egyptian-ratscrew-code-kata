@@ -77,7 +77,15 @@ namespace CelticEgyptianRatscrewKata
             return false;
         }
 
-
+        public IPlayer IsWinner()
+        {
+            for(int i = 0; i < m_PlayersWithHands.Count; ++i)
+            {
+                if (m_PlayersWithHands.ElementAt(i).Value.Count() == m_Deck.Count())
+                    return m_PlayersWithHands.ElementAt(i).Key;
+            }
+            return null;
+        }
 
         public bool DeckContainsAllCardsIn(Cards cards)
         {
