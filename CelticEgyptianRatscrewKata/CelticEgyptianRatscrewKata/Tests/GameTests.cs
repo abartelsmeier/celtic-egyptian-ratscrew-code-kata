@@ -150,5 +150,31 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             Assert.That(result, Is.True);
         }
+
+        [Test]
+        public void GameCheckIfThereIsAWinner()
+        {
+            Cards deck = new Cards(new List<Card> 
+                            {
+                                GameTestVariables.AceOfClubs(),
+                                GameTestVariables.AceOfDiamonds()
+                            });
+            var player1 = new Player("Player 1");
+            var player2 = new Player("Player 2");
+            List<Player> players = new List<Player>
+                            {
+                                player1,
+                                player2
+                            };
+            Game game = new Game(players, deck);
+            game.Start();
+            game.PlayCard(player1);
+            game.PlayCard(player2);
+            game.AttemptSnap(player1);
+
+            IPlayer winner = game.IsWinner();
+
+            Assert.That(winner, Is.Not.EqualTo(null));
+        }
     }
 }
