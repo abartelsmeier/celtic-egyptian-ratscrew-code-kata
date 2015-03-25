@@ -1,5 +1,4 @@
-﻿using System;
-namespace CelticEgyptianRatscrewKata
+﻿namespace CelticEgyptianRatscrewKata.Game
 {
     interface IShuffler
     {

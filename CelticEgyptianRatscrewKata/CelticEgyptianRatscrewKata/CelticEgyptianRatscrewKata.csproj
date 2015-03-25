@@ -47,17 +47,19 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="Cards.cs" />
-    <Compile Include="Dealer.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="IDealer.cs" />
+    <Compile Include="Game\Dealer.cs" />
+    <Compile Include="Game\GameController.cs" />
+    <Compile Include="Game\IDealer.cs" />
     <Compile Include="IPlayer.cs" />
+    <Compile Include="Game\IStackController.cs" />
+    <Compile Include="Game\StackController.cs" />
     <Compile Include="IRandomNumberGenerator.cs" />
-    <Compile Include="IShuffler.cs" />
+    <Compile Include="Game\IShuffler.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomNumberGenerator.cs" />
     <Compile Include="Rank.cs" />
-    <Compile Include="Shuffler.cs" />
+    <Compile Include="Game\Shuffler.cs" />
     <Compile Include="SnapRules\DarkQueenSnapRule.cs" />
     <Compile Include="SnapRules\IRule.cs" />
     <Compile Include="SnapRules\ISnapValidator.cs" />
@@ -66,8 +68,7 @@
     <Compile Include="Tests\DarkQueenSnapRuleTests.cs" />
     <Compile Include="SnapRules\SandwichSnapRule.cs" />
     <Compile Include="Tests\DealerTests.cs" />
-    <Compile Include="Tests\GameTests.cs" />
-    <Compile Include="Tests\GameTestVariables.cs" />
+    <Compile Include="Tests\GameControllerTests.cs" />
     <Compile Include="Tests\SandwichSnapRuleTests.cs" />
     <Compile Include="Tests\ShufflerTests.cs" />
     <Compile Include="Tests\SnapValidatorTests.cs" />

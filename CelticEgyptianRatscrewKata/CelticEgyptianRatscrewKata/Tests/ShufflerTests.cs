@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using CelticEgyptianRatscrewKata.Game;
+using Moq;
 using NUnit.Framework;
 
 namespace CelticEgyptianRatscrewKata.Tests
