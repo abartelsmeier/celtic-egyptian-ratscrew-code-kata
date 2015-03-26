@@ -18,6 +18,15 @@ namespace ConsoleBasedGame.Tests
             playerActions.Add('a', ActionMethod, PlayerA());
         }
 
+        [Test]
+        public void HandleKey()
+        {
+            PlayerActions playerActions = new PlayerActions();
+            playerActions.Add('a', ActionMethod, PlayerA());
+
+            playerActions.HandleKey('a');
+        }
+
         private static IPlayer PlayerA()
         {
             return new Player("PlayerA");
