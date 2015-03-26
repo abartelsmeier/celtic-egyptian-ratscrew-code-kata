@@ -14,9 +14,13 @@ namespace ConsoleBasedGame.Tests
         public void CreateAndAddPlayerActions()
         {
             PlayerActions playerActions = new PlayerActions();
-            IPlayer player = new Player("PlayerA");
 
-            playerActions.Add('a', ActionMethod, player);
+            playerActions.Add('a', ActionMethod, PlayerA());
+        }
+
+        private static IPlayer PlayerA()
+        {
+            return new Player("PlayerA");
         }
 
         private void ActionMethod(IPlayer player)
