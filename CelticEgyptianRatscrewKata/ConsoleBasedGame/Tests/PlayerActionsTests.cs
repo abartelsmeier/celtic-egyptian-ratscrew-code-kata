@@ -15,4 +15,8 @@ namespace ConsoleBasedGame.Tests
             PlayerActions playerActions = new PlayerActions();
         }
     }
+
+    internal class PlayerActions
+    {
+    }
 }
