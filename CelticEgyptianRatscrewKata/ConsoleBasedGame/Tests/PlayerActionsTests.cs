@@ -42,5 +42,9 @@ namespace ConsoleBasedGame.Tests
         public void Add(char key, Action<IPlayer> actionMethod, IPlayer player)
         {
         }
+
+        public void HandleKey(char key)
+        {
+        }
     }
 }
