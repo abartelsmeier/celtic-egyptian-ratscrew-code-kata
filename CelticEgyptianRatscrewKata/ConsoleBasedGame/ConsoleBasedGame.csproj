@@ -44,9 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPlayerActions.cs" />
     <Compile Include="PlayerInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PlayerActions.cs" />
     <Compile Include="Tests\PlayerActionsTests.cs" />
     <Compile Include="UserInterface.cs" />
   </ItemGroup>

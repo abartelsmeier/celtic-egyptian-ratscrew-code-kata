@@ -4,7 +4,7 @@ using CelticEgyptianRatscrewKata.Game;
 
 namespace ConsoleBasedGame
 {
-    internal class PlayerActions
+    internal class PlayerActions : IPlayerActions
     {
         private IDictionary<char, Tuple<Action<IPlayer>, IPlayer>> m_PlayerActions;
 
