@@ -6,22 +6,23 @@ namespace ConsoleBasedGame
 {
     internal class PlayerActions : IPlayerActions
     {
-        private IDictionary<char, Tuple<Action<IPlayer>, IPlayer>> m_PlayerActions;
-
+        private readonly IDictionary<char, PlayerAction> m_PlayerActions;
+        
         public PlayerActions()
         {
-            m_PlayerActions = new Dictionary<char, Tuple<Action<IPlayer>, IPlayer>>();
+            m_PlayerActions = new Dictionary<char, PlayerAction>();
         }
 
-        public void Add(char key, Action<IPlayer> actionMethod, IPlayer player)
+        public void Add(char key, PlayerMethod actionMethod, IPlayer player)
         {
-            m_PlayerActions.Add(key,new Tuple<Action<IPlayer>, IPlayer>(actionMethod,player));
+            var playerAction = new PlayerAction(actionMethod, player);
+            m_PlayerActions.Add(key, playerAction);
         }
 
         public void HandleKey(char key)
         {
             if(m_PlayerActions.ContainsKey(key))
-                m_PlayerActions[key].Item1(m_PlayerActions[key].Item2);
+                m_PlayerActions[key].Execute();
         }
     }
 }
