@@ -15,13 +15,12 @@ namespace ConsoleBasedGame.Tests
         {
             PlayerActions playerActions = new PlayerActions();
             IPlayer player = new Player("PlayerA");
-            
+
             playerActions.Add('a', ActionMethod, player);
         }
 
         private void ActionMethod(IPlayer player)
         {
-            throw new NotImplementedException();
         }
     }
 
@@ -29,7 +28,6 @@ namespace ConsoleBasedGame.Tests
     {
         public void Add(char key, Action<IPlayer> actionMethod, IPlayer player)
         {
-            throw new NotImplementedException();
         }
     }
 }
