@@ -10,6 +10,8 @@ namespace ConsoleBasedGame.Tests
 {
     class PlayerActionsTests
     {
+        private bool m_ActionMethodHasFired;
+
         [Test]
         public void CreateAndAddPlayerActions()
         {
@@ -19,12 +21,15 @@ namespace ConsoleBasedGame.Tests
         }
 
         [Test]
-        public void HandleKey()
+        public void HandleKeyExecutesMethod()
         {
             PlayerActions playerActions = new PlayerActions();
             playerActions.Add('a', ActionMethod, PlayerA());
 
+            m_ActionMethodHasFired = false;
             playerActions.HandleKey('a');
+
+            Assert.That(m_ActionMethodHasFired, Is.True);
         }
 
         private static IPlayer PlayerA()
@@ -34,6 +39,7 @@ namespace ConsoleBasedGame.Tests
 
         private void ActionMethod(IPlayer player)
         {
+            m_ActionMethodHasFired = true;
         }
     }
 
