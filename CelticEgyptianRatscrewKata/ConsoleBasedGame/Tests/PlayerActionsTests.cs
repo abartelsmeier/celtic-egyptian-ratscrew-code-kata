@@ -53,6 +53,8 @@ namespace ConsoleBasedGame.Tests
 
         public void HandleKey(char key)
         {
+            if(m_PlayerActions.ContainsKey(key))
+                m_PlayerActions[key].Item1(m_PlayerActions[key].Item2);
         }
     }
 }
