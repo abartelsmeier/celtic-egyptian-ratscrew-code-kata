@@ -18,9 +18,18 @@ namespace ConsoleBasedGame.Tests
             
             playerActions.Add('a', ActionMethod, player);
         }
+
+        private void ActionMethod(IPlayer player)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class PlayerActions
     {
+        public void Add(char key, Action<IPlayer> actionMethod, IPlayer player)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
