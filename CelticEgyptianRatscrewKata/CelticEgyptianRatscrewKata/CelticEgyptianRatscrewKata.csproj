@@ -70,6 +70,7 @@
     <Compile Include="SnapRules\SandwichSnapRule.cs" />
     <Compile Include="Tests\DealerTests.cs" />
     <Compile Include="Tests\GameControllerTests.cs" />
+    <Compile Include="Tests\GameStateTests.cs" />
     <Compile Include="Tests\SandwichSnapRuleTests.cs" />
     <Compile Include="Tests\ShufflerTests.cs" />
     <Compile Include="Tests\SnapValidatorTests.cs" />
