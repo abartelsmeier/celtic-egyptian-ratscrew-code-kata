@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using CelticEgyptianRatscrewKata.Game;
+using Moq;
 using NUnit.Framework;
 
 namespace CelticEgyptianRatscrewKata.Tests
@@ -14,6 +15,14 @@ namespace CelticEgyptianRatscrewKata.Tests
             mockListener.Object.Notify(new GameStateUpdate());
 
             mockListener.Verify();
+        }
+
+        [Test]
+        public void CreateGameStateWithListener()
+        {
+            var mockListener = new Mock<IGameStateListener>();
+            mockListener.Setup(x => x.Notify(It.IsAny<GameStateUpdate>())).Verifiable();
+            var gameState = new GameState(mockListener);
         }
     }
 
