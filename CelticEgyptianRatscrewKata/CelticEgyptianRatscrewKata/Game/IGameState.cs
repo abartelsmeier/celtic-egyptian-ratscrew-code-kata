@@ -13,22 +13,22 @@ namespace CelticEgyptianRatscrewKata.Game
         /// Add the given player to the game with the given deck.
         /// </summary>
         /// <exception cref="ArgumentException">If the given player already exists</exception>
-        void AddPlayer(string playerId, Cards deck);
+        void AddPlayer(IPlayer player, Cards deck);
 
         /// <summary>
         /// Play the top card of the given player's deck.
         /// </summary>
-        void PlayCard(string playerId);
+        void PlayCard(IPlayer player);
 
         /// <summary>
         /// Wins the stack for the given player.
         /// </summary>
-        void WinStack(string playerId);
+        void WinStack(IPlayer player);
 
         /// <summary>
         /// Returns true if the given player has any cards in their hand.
         /// </summary>
-        bool HasCards(string playerId);
+        bool HasCards(IPlayer player);
 
         /// <summary>
         /// Resets the game state back to its default values.

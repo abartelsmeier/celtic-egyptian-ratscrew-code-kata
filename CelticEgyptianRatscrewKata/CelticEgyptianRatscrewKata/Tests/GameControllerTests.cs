@@ -44,7 +44,7 @@ namespace CelticEgyptianRatscrewKata.Tests
             IPlayer winner;
             var hasWinner = gameController.TryGetWinner(out winner);
             Assert.True(hasWinner);
-            Assert.That(winner.Name, Is.EqualTo(playerC.Name));
+            Assert.That(winner, Is.EqualTo(playerC));
         }
 
         private static GameController CreateGameController()

@@ -27,18 +27,18 @@ namespace CelticEgyptianRatscrewKata.Game
 
         public bool AddPlayer(IPlayer player)
         {
-            if (m_Players.Any(x => x.Name == player.Name)) return false;
+            if (m_Players.Any(x => x == player)) return false;
 
             m_Players.Add(player);
-            m_GameState.AddPlayer(player.Name, Cards.Empty());
+            m_GameState.AddPlayer(player, Cards.Empty());
             return true;
         }
 
         public void PlayCard(IPlayer player)
         {
-            if (m_GameState.HasCards(player.Name))
+            if (m_GameState.HasCards(player))
             {
-                m_GameState.PlayCard(player.Name);
+                m_GameState.PlayCard(player);
             }
         }
 
@@ -48,7 +48,7 @@ namespace CelticEgyptianRatscrewKata.Game
 
             if (m_SnapValidator.CanSnap(m_GameState.Stack))
             {
-                m_GameState.WinStack(player.Name);
+                m_GameState.WinStack(player);
             }
         }
 
@@ -63,13 +63,13 @@ namespace CelticEgyptianRatscrewKata.Game
             var decks = m_Dealer.Deal(m_Players.Count, shuffledDeck);
             for (var i = 0; i < decks.Count; i++)
             {
-                m_GameState.AddPlayer(m_Players[i].Name, decks[i]);
+                m_GameState.AddPlayer(m_Players[i], decks[i]);
             }
         }
 
         public bool TryGetWinner(out IPlayer winner)
         {
-            var playersWithCards = m_Players.Where(p => m_GameState.HasCards(p.Name)).ToList();
+            var playersWithCards = m_Players.Where(p => m_GameState.HasCards(p)).ToList();
 
             if (!m_GameState.Stack.Any() && playersWithCards.Count() == 1)
             {
