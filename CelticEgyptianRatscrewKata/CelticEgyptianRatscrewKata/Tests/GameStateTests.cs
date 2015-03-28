@@ -26,7 +26,21 @@ namespace CelticEgyptianRatscrewKata.Tests
             
             var gameState = new GameState(mockListener.Object);
         }
-        
+
+        [Test]
+        public void CreateGameStateWithListenerAndTriggerUpdate()
+        {
+            var playerA = new Player("PlayerA");
+            var mockListener = new Mock<IGameStateListener>();
+            mockListener.Setup(x => x.Notify(It.IsAny<GameStateUpdate>())).Verifiable();
+            var gameState = new GameState(mockListener.Object);
+            gameState.AddPlayer(playerA, TestCards());
+
+            gameState.PlayCard(playerA);
+
+            mockListener.Verify();
+        }
+
         private static Cards TestCards()
         {
             return new Cards(new List<Card>
