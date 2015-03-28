@@ -49,8 +49,10 @@ namespace CelticEgyptianRatscrewKata.Game
 
             var topCard = m_Decks[player].Pop();
             m_Stack.AddToTop(topCard);
-        }
 
+            if (m_Listener != null) m_Listener.Notify(new GameStateUpdate(m_Stack, player, null, m_Decks));
+        }
+        
         public void WinStack(IPlayer player)
         {
             if (!m_Decks.ContainsKey(player)) throw new ArgumentException("The selected player doesn't exist");

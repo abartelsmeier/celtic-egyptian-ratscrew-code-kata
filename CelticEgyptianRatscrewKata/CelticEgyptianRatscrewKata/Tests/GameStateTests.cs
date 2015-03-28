@@ -73,14 +73,14 @@ namespace CelticEgyptianRatscrewKata.Tests
     {
         public Cards Stack { get; private set; }
         public IPlayer Player { get; private set; }
-        public IPlayer LastPlayer { get; private set; }
+        public IPlayer NextPlayer { get; private set; }
         public IDictionary<IPlayer, Cards> Decks { get; private set; }
 
-        public GameStateUpdate(Cards stack, IPlayer player, IPlayer lastPlayer, IDictionary<IPlayer, Cards> decks)
+        public GameStateUpdate(Cards stack, IPlayer player, IPlayer nextPlayer, IDictionary<IPlayer, Cards> decks)
         {
             Stack = stack;
             Player = player;
-            LastPlayer = lastPlayer;
+            NextPlayer = nextPlayer;
             Decks = decks;
         }
     }
