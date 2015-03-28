@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using CelticEgyptianRatscrewKata.Tests;
 
 namespace CelticEgyptianRatscrewKata.Game
 {
@@ -12,20 +13,25 @@ namespace CelticEgyptianRatscrewKata.Game
     {
         private readonly Cards m_Stack;
         private readonly IDictionary<string, Cards> m_Decks;
+        private readonly IGameStateListener m_Listener;
 
         /// <summary>
         /// Default constructor.
         /// </summary>
         public GameState()
-            : this(Cards.Empty(), new Dictionary<string, Cards>()) {}
+            : this(Cards.Empty(), new Dictionary<string, Cards>(),null) {}
+
+        public GameState(IGameStateListener listener)
+            : this(Cards.Empty(), new Dictionary<string, Cards>(), listener) { }
 
         /// <summary>
         /// Constructor to allow setting the central stack.
         /// </summary>
-        public GameState(Cards stack, IDictionary<string, Cards> decks)
+        public GameState(Cards stack, IDictionary<string, Cards> decks, IGameStateListener listener)
         {
             m_Stack = stack;
             m_Decks = decks;
+            m_Listener = listener;
         }
 
         public Cards Stack { get {return new Cards(m_Stack);} }

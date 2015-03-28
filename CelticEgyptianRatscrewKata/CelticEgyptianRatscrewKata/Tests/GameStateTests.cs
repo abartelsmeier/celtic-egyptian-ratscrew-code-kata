@@ -22,7 +22,8 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             var mockListener = new Mock<IGameStateListener>();
             mockListener.Setup(x => x.Notify(It.IsAny<GameStateUpdate>())).Verifiable();
-            var gameState = new GameState(mockListener);
+            
+            var gameState = new GameState(mockListener.Object);
         }
     }
 
