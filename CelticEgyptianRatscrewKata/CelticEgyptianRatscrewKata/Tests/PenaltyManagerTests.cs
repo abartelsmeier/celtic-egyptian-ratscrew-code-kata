@@ -17,4 +17,14 @@ namespace CelticEgyptianRatscrewKata.Tests
             PenaltyManager penaltyManager = new PenaltyManager(players);
         }
     }
+
+    public class PenaltyManager
+    {
+        private readonly IEnumerable<IPlayer> _players;
+
+        public PenaltyManager(IEnumerable<IPlayer> players)
+        {
+            _players = players;
+        }
+    }
 }
