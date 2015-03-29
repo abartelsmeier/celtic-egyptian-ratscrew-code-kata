@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace CelticEgyptianRatscrewKata.Game
 {
-    public class PenaltyManager
+    public class PenaltyManager : IPenaltyManager
     {
         private readonly IDictionary<IPlayer, Penalty> _penalties;
 
