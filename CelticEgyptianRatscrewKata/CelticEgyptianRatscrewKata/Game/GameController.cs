@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CelticEgyptianRatscrewKata.GameSetup;
 using CelticEgyptianRatscrewKata.SnapRules;
@@ -44,24 +45,30 @@ namespace CelticEgyptianRatscrewKata.Game
 
         public void PlayCard(IPlayer player)
         {
+            var action = GameControllerAction.PlayCardFail;
+
             if (m_GameState.HasCards(player))
             {
                 m_GameState.PlayCard(player);
-                if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate());
+                action = GameControllerAction.PlayCardSuccess;
             }
-            else if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate());
+
+            if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate(player, action));
         }
 
         public void AttemptSnap(IPlayer player)
         {
+            var action = GameControllerAction.AttemptSnapFail;
+
             AddPlayer(player);
 
             if (m_SnapValidator.CanSnap(m_GameState.Stack))
             {
                 m_GameState.WinStack(player);
-                if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate());
+                action = GameControllerAction.AttemptSnapSuccess;
             }
-            else if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate());
+            
+            if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate(player,action));
         }
 
         /// <summary>

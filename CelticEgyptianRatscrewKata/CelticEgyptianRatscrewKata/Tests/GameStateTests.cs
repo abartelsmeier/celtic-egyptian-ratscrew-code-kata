@@ -85,6 +85,22 @@ namespace CelticEgyptianRatscrewKata.Tests
 
     public class GameControllerUpdate
     {
+        public IPlayer Player { get; private set; }
+        public GameControllerAction Action { get; private set; }
+
+        public GameControllerUpdate(IPlayer player, GameControllerAction action)
+        {
+            Player = player;
+            Action = action;
+        }
+    }
+
+    public enum GameControllerAction
+    {
+        PlayCardSuccess,
+        PlayCardFail,
+        AttemptSnapSuccess,
+        AttemptSnapFail
     }
 
     public interface IGameStateListener
