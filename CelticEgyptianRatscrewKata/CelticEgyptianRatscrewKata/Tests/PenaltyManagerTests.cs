@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CelticEgyptianRatscrewKata.Game;
+using NSubstitute.Routing.Handlers;
 using NUnit.Framework;
 
 namespace CelticEgyptianRatscrewKata.Tests
@@ -18,23 +19,40 @@ namespace CelticEgyptianRatscrewKata.Tests
         }
 
         [Test]
-        public void CreatePenaltyManagerAndTakeTurn()
+        public void CreatePenaltyManagerAndQueryPenalty()
         {
             Player playerA = new Player("PlayerA");
             List<IPlayer> players = new List<IPlayer>{playerA};
             PenaltyManager penaltyManager = new PenaltyManager(players);
 
             Penalty penalty = penaltyManager.HasPenalty(playerA);
+
+            Assert.That(penalty, Is.EqualTo(Penalty.None));
         }
+    }
+
+    public enum Penalty
+    {
+        None
     }
 
     public class PenaltyManager
     {
-        private readonly IEnumerable<IPlayer> _players;
+        private readonly IDictionary<IPlayer, Penalty> _penalties;
 
         public PenaltyManager(IEnumerable<IPlayer> players)
         {
-            _players = players;
+            _penalties = new Dictionary<IPlayer, Penalty>();
+            foreach (var player in players)
+            {
+                _penalties.Add(player, Penalty.None);
+            }
+        }
+
+        public Penalty HasPenalty(IPlayer player)
+        {
+            if (_penalties.ContainsKey(player)) return _penalties[player];
+            return Penalty.None;
         }
     }
 }
