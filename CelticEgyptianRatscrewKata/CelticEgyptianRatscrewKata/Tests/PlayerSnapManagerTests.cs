@@ -23,4 +23,12 @@ namespace CelticEgyptianRatscrewKata.Tests
             PlayerSnapManager playerSnapManager = new PlayerSnapManager(gameMock.Object, penaltyManager);
         }
     }
+
+    public class PlayerSnapManager
+    {
+        public PlayerSnapManager(IGameController gameController, IPenaltyManager penaltyManager)
+        {
+            
+        }
+    }
 }
