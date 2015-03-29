@@ -18,7 +18,7 @@ namespace CelticEgyptianRatscrewKata.Game
         public Penalty HasPenalty(IPlayer player)
         {
             if (_penalties.ContainsKey(player)) return _penalties[player];
-            return Penalty.None;
+            return Penalty.Null;
         }
 
         public void ImposePenalty(IPlayer player, Penalty penalty)
@@ -42,6 +42,7 @@ namespace CelticEgyptianRatscrewKata.Game
 
     public enum Penalty
     {
+        Null,
         None,
         PlayedOutOfTurn
     }
