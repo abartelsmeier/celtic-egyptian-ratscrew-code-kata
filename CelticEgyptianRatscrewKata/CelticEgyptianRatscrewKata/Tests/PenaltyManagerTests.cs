@@ -46,7 +46,8 @@ namespace CelticEgyptianRatscrewKata.Tests
 
     public enum Penalty
     {
-        None
+        None,
+        PlayedOutOfTurn
     }
 
     public class PenaltyManager
@@ -66,6 +67,11 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             if (_penalties.ContainsKey(player)) return _penalties[player];
             return Penalty.None;
+        }
+
+        public void ImposePenalty(IPlayer player, Penalty penalty)
+        {
+            if (_penalties.ContainsKey(player)) _penalties[player] = penalty;
         }
     }
 }
