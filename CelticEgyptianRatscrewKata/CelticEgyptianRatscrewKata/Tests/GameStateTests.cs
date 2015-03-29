@@ -78,9 +78,18 @@ namespace CelticEgyptianRatscrewKata.Tests
         
     }
 
+    public interface IGameControllerListener
+    {
+        void Notify(GameControllerUpdate update);
+    }
+
+    public class GameControllerUpdate
+    {
+    }
+
     public interface IGameStateListener
     {
-        void Notify(GameStateUpdate gameStateUpdate);
+        void Notify(GameStateUpdate update);
     }
 
     public class GameStateUpdate

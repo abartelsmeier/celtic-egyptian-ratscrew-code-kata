@@ -2,6 +2,7 @@
 using System.Linq;
 using CelticEgyptianRatscrewKata.GameSetup;
 using CelticEgyptianRatscrewKata.SnapRules;
+using CelticEgyptianRatscrewKata.Tests;
 
 namespace CelticEgyptianRatscrewKata.Game
 {
@@ -15,14 +16,21 @@ namespace CelticEgyptianRatscrewKata.Game
         private readonly IShuffler m_Shuffler;
         private readonly IList<IPlayer> m_Players;
         private readonly IGameState m_GameState;
+        private readonly IGameControllerListener m_Listener;
 
         public GameController(IGameState gameState, ISnapValidator snapValidator, IDealer dealer, IShuffler shuffler)
+            : this(gameState,snapValidator,dealer,shuffler,null)
+        {
+        }
+
+        public GameController(IGameState gameState, ISnapValidator snapValidator, IDealer dealer, IShuffler shuffler, IGameControllerListener listener)
         {
             m_Players = new List<IPlayer>();
             m_GameState = gameState;
             m_SnapValidator = snapValidator;
             m_Dealer = dealer;
             m_Shuffler = shuffler;
+            m_Listener = listener;
         }
 
         public bool AddPlayer(IPlayer player)
@@ -39,7 +47,9 @@ namespace CelticEgyptianRatscrewKata.Game
             if (m_GameState.HasCards(player))
             {
                 m_GameState.PlayCard(player);
+                if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate());
             }
+            else if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate());
         }
 
         public void AttemptSnap(IPlayer player)
@@ -49,7 +59,9 @@ namespace CelticEgyptianRatscrewKata.Game
             if (m_SnapValidator.CanSnap(m_GameState.Stack))
             {
                 m_GameState.WinStack(player);
+                if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate());
             }
+            else if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate());
         }
 
         /// <summary>

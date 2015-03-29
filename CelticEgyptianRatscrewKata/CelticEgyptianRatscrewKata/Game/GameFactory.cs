@@ -1,5 +1,6 @@
 ﻿using CelticEgyptianRatscrewKata.GameSetup;
 using CelticEgyptianRatscrewKata.SnapRules;
+using CelticEgyptianRatscrewKata.Tests;
 
 namespace CelticEgyptianRatscrewKata.Game
 {
@@ -7,13 +8,17 @@ namespace CelticEgyptianRatscrewKata.Game
     {
         public GameController Create()
         {
+            return Create(null);
+        }
+        public GameController Create(IGameControllerListener controllerListener)
+        {
             IRule[] rules =
             {
                 new DarkQueenSnapRule(),
                 new SandwichSnapRule(),
                 new StandardSnapRule(),
             };
-            return new GameController(new GameState(), new SnapValidator(rules), new Dealer(), new Shuffler());
+            return new GameController(new GameState(), new SnapValidator(rules), new Dealer(), new Shuffler(), controllerListener);
         }
 
         public static Cards CreateFullDeckOfCards()
