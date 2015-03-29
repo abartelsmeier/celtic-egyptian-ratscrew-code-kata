@@ -12,6 +12,13 @@ namespace CelticEgyptianRatscrewKata.Tests
             List<IPlayer> players = new List<IPlayer>();
             PlayerTurnManager playerTurnManager = new PlayerTurnManager(players);
         }
+
+        [Test]
+        public void CreatePlayerTurnManagerAndTakeTurn()
+        {
+            List<IPlayer> players = new List<IPlayer>();
+            PlayerTurnManager playerTurnManager = new PlayerTurnManager(players);
+        }
     }
 
     public class PlayerTurnManager
