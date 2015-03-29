@@ -53,8 +53,11 @@
     <Compile Include="GameSetup\RandomNumberGenerator.cs" />
     <Compile Include="GameSetup\Shuffler.cs" />
     <Compile Include="Game\GameController.cs" />
+    <Compile Include="Game\GameControllerUpdate.cs" />
     <Compile Include="Game\GameFactory.cs" />
     <Compile Include="Game\GameState.cs" />
+    <Compile Include="Game\GameStateUpdate.cs" />
+    <Compile Include="Game\IGameControllerListener.cs" />
     <Compile Include="Game\IGameState.cs" />
     <Compile Include="Game\IPlayer.cs" />
     <Compile Include="Cards.cs" />
@@ -70,7 +73,7 @@
     <Compile Include="SnapRules\SandwichSnapRule.cs" />
     <Compile Include="Tests\DealerTests.cs" />
     <Compile Include="Tests\GameControllerTests.cs" />
-    <Compile Include="Tests\GameStateTests.cs" />
+    <Compile Include="Tests\GameControllerListenerTests.cs" />
     <Compile Include="Tests\SandwichSnapRuleTests.cs" />
     <Compile Include="Tests\ShufflerTests.cs" />
     <Compile Include="Tests\SnapValidatorTests.cs" />
