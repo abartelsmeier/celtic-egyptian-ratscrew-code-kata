@@ -77,6 +77,7 @@
     <Compile Include="SnapRules\SnapValidator.cs" />
     <Compile Include="SnapRules\StandardSnapRule.cs" />
     <Compile Include="Tests\PenaltyManagerTests.cs" />
+    <Compile Include="Tests\PlayerSnapManagerTests.cs" />
     <Compile Include="Tests\PlayerTurnManagerTests.cs" />
     <Compile Include="Tests\SnapRules\DarkQueenRuleTests.cs" />
     <Compile Include="Tests\SnapRules\SandwichSnapRuleTests.cs" />
