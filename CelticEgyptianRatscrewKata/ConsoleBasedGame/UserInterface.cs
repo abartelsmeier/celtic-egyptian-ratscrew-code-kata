@@ -27,7 +27,6 @@ namespace ConsoleBasedGame
             m_Lines = new Dictionary<Line, string>(Enum.GetValues(typeof(Line)).Length);
             m_GameOver = false;
             m_Lines[Line.Stack] = "Game Begins";
-            Render();
         }
 
         private static char AskForKey(string prompt)
@@ -80,10 +79,9 @@ namespace ConsoleBasedGame
                     m_GameOver = true;
                     break;
             }
-            Render();
         }
         
-        private void Render()
+        public void Render()
         {
             Console.Clear();
 

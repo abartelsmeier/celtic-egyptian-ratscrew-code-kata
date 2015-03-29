@@ -29,6 +29,7 @@ namespace ConsoleBasedGame
             while (userInterface.TryReadUserInput(out userInput))
             {
                 playerActions.HandleKey(userInput);
+                userInterface.Render();
             } 
         }
     }
