@@ -1,4 +1,5 @@
 ﻿using System;
+using CelticEgyptianRatscrewKata.Tests;
 
 namespace CelticEgyptianRatscrewKata.Game
 {
@@ -18,12 +19,12 @@ namespace CelticEgyptianRatscrewKata.Game
         /// <summary>
         /// Play the top card of the given player's deck.
         /// </summary>
-        void PlayCard(IPlayer player);
+        GameStateUpdate PlayCard(IPlayer player);
 
         /// <summary>
         /// Wins the stack for the given player.
         /// </summary>
-        void WinStack(IPlayer player);
+        GameStateUpdate WinStack(IPlayer player);
 
         /// <summary>
         /// Returns true if the given player has any cards in their hand.

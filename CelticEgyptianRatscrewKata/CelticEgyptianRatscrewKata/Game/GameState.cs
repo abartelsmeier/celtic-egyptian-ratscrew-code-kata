@@ -13,36 +13,31 @@ namespace CelticEgyptianRatscrewKata.Game
     {
         private readonly Cards m_Stack;
         private readonly IDictionary<IPlayer, Cards> m_Decks;
-        private readonly IGameStateListener m_Listener;
-
+        
         /// <summary>
         /// Default constructor.
         /// </summary>
         public GameState()
-            : this(Cards.Empty(), new Dictionary<IPlayer, Cards>(), null) { }
-
-        public GameState(IGameStateListener listener)
-            : this(Cards.Empty(), new Dictionary<IPlayer, Cards>(), listener) { }
+            : this(Cards.Empty(), new Dictionary<IPlayer, Cards>()) { }
 
         /// <summary>
         /// Constructor to allow setting the central stack.
         /// </summary>
-        public GameState(Cards stack, IDictionary<IPlayer, Cards> decks, IGameStateListener listener)
+        public GameState(Cards stack, IDictionary<IPlayer, Cards> decks)
         {
             m_Stack = stack;
             m_Decks = decks;
-            m_Listener = listener;
         }
 
         public Cards Stack { get {return new Cards(m_Stack);} }
-
+        
         public void AddPlayer(IPlayer player, Cards deck)
         {
             if (m_Decks.ContainsKey(player)) throw new ArgumentException("Can't add the same player twice");
             m_Decks.Add(player, deck);
         }
 
-        public void PlayCard(IPlayer player)
+        public GameStateUpdate PlayCard(IPlayer player)
         {
             if (!m_Decks.ContainsKey(player)) throw new ArgumentException("The selected player doesn't exist");
             if (!m_Decks[player].Any()) throw new ArgumentException("The selected player doesn't have any cards left");
@@ -50,10 +45,10 @@ namespace CelticEgyptianRatscrewKata.Game
             var topCard = m_Decks[player].Pop();
             m_Stack.AddToTop(topCard);
 
-            if (m_Listener != null) m_Listener.Notify(new GameStateUpdate(m_Stack, player, null, m_Decks));
+            return new GameStateUpdate(m_Stack, m_Decks);
         }
-        
-        public void WinStack(IPlayer player)
+
+        public GameStateUpdate WinStack(IPlayer player)
         {
             if (!m_Decks.ContainsKey(player)) throw new ArgumentException("The selected player doesn't exist");
 
@@ -63,6 +58,8 @@ namespace CelticEgyptianRatscrewKata.Game
             }
 
             ClearStack();
+
+            return new GameStateUpdate(m_Stack, m_Decks);
         }
 
         private void ClearStack()

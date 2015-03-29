@@ -7,14 +7,20 @@ namespace ConsoleBasedGame
     {
         static void Main(string[] args)
         {
-            GameController game = new GameFactory().Create();
-
             var userInterface = new UserInterface();
+
+            GameController game = new GameFactory().Create(userInterface);
+
+            var playerActions = new PlayerActions();
+            
             IEnumerable<PlayerInfo> playerInfos = userInterface.GetPlayerInfoFromUserLazily();
 
             foreach (PlayerInfo playerInfo in playerInfos)
             {
-                game.AddPlayer(new Player(playerInfo.PlayerName));
+                var player = new Player(playerInfo.PlayerName);
+                game.AddPlayer(player);
+                playerActions.Add(playerInfo.SnapKey, game.AttemptSnap, player);
+                playerActions.Add(playerInfo.PlayCardKey, game.PlayCard, player);
             }
 
             game.StartGame(GameFactory.CreateFullDeckOfCards());
@@ -22,7 +28,7 @@ namespace ConsoleBasedGame
             char userInput;
             while (userInterface.TryReadUserInput(out userInput))
             {
-
+                playerActions.HandleKey(userInput);
             } 
         }
     }

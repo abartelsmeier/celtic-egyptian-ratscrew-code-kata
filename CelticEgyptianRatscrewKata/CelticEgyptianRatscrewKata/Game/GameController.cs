@@ -18,6 +18,7 @@ namespace CelticEgyptianRatscrewKata.Game
         private readonly IList<IPlayer> m_Players;
         private readonly IGameState m_GameState;
         private readonly IGameControllerListener m_Listener;
+        private int m_NextPlayer;
 
         public GameController(IGameState gameState, ISnapValidator snapValidator, IDealer dealer, IShuffler shuffler)
             : this(gameState,snapValidator,dealer,shuffler,null)
@@ -46,31 +47,50 @@ namespace CelticEgyptianRatscrewKata.Game
         public void PlayCard(IPlayer player)
         {
             var action = GameControllerAction.PlayCardFail;
+            GameStateUpdate state = null;
 
             if (m_GameState.HasCards(player))
             {
-                m_GameState.PlayCard(player);
+                state = m_GameState.PlayCard(player);
+                IncrementNextPlayer();
+
                 action = GameControllerAction.PlayCardSuccess;
             }
 
-            if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate(player, action));
+            if (m_Listener == null) return;
+            m_Listener.Notify(PackageUpdate(action, player, state));
+        }
+
+        private void IncrementNextPlayer()
+        {
+            m_NextPlayer++;
+            if (m_NextPlayer >= m_Players.Count) m_NextPlayer = 0;
         }
 
         public void AttemptSnap(IPlayer player)
         {
-            var action = GameControllerAction.AttemptSnapFail;
-
             AddPlayer(player);
+
+            var action = GameControllerAction.AttemptSnapFail;
+            GameStateUpdate state = null;
 
             if (m_SnapValidator.CanSnap(m_GameState.Stack))
             {
-                m_GameState.WinStack(player);
+                state = m_GameState.WinStack(player);
                 action = GameControllerAction.AttemptSnapSuccess;
+                IPlayer testPlayer = player;
+                if (TryGetWinner(out testPlayer))
+                    action = GameControllerAction.WinGame;
             }
-            
-            if (m_Listener != null) m_Listener.Notify(new GameControllerUpdate(player,action));
+
+            if (m_Listener == null) return;
+            m_Listener.Notify(PackageUpdate(action, player, state));
         }
 
+        private GameControllerUpdate PackageUpdate(GameControllerAction action, IPlayer player, GameStateUpdate state)
+        {
+            return new GameControllerUpdate(state,player,m_Players.ElementAt(m_NextPlayer),action);
+        }
         /// <summary>
         /// Starts a game with the currently added players
         /// </summary>
@@ -84,6 +104,7 @@ namespace CelticEgyptianRatscrewKata.Game
             {
                 m_GameState.AddPlayer(m_Players[i], decks[i]);
             }
+            m_NextPlayer = 0;
         }
 
         public bool TryGetWinner(out IPlayer winner)
