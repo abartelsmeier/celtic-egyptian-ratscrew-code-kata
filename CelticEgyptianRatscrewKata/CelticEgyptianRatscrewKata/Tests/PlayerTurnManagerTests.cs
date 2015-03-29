@@ -12,9 +12,13 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void CreatePlayerTurnManager()
         {
+            Player playerA = new Player("PlayerA");
+            List<IPlayer> players = new List<IPlayer>{playerA};
             var gameMock = new Mock<IGameController>();
-            
-            PlayerTurnManager playerTurnManager = new PlayerTurnManager(gameMock.Object);
+            gameMock.Setup(x => x.Players).Returns(players);
+            var penaltyManager = new PenaltyManager(gameMock.Object.Players);
+
+            PlayerTurnManager playerTurnManager = new PlayerTurnManager(gameMock.Object, penaltyManager);
         }
 
         [Test]
@@ -25,7 +29,8 @@ namespace CelticEgyptianRatscrewKata.Tests
             var gameMock = new Mock<IGameController>();
             gameMock.Setup(x => x.Players).Returns(players);
             gameMock.Setup(x => x.PlayCard(playerA)).Returns(new Card(Suit.Clubs, Rank.Ace));
-            PlayerTurnManager playerTurnManager = new PlayerTurnManager(gameMock.Object);
+            var penaltyManager = new PenaltyManager(gameMock.Object.Players);
+            PlayerTurnManager playerTurnManager = new PlayerTurnManager(gameMock.Object, penaltyManager);
 
             PlayCardResult playResult = playerTurnManager.PlayCard(playerA);
 
@@ -84,11 +89,11 @@ namespace CelticEgyptianRatscrewKata.Tests
         private readonly IPenaltyManager _penaltyManager;
         private int _nextPlayer;
 
-        public PlayerTurnManager(IGameController gameController)
+        public PlayerTurnManager(IGameController gameController, IPenaltyManager penaltyManager)
         {
             _gameController = gameController;
+            _penaltyManager = penaltyManager;
             _nextPlayer = 0;
-            _penaltyManager = new PenaltyManager(gameController.Players);
         }
 
         public PlayCardResult PlayCard(IPlayer player)
