@@ -41,6 +41,20 @@ namespace CelticEgyptianRatscrewKata.Tests
             mockListener.Verify();
         }
 
+        [Test]
+        public void CreateGameControllerWithListenerAndTriggerUpdate()
+        {
+            var playerA = new Player("PlayerA");
+            var mockListener = new Mock<IGameControllerListener>();
+            mockListener.Setup(x => x.Notify(It.IsAny<GameControllerUpdate>())).Verifiable();
+            var gameController = new GameFactory().Create(mockListener.Object);
+            gameController.AddPlayer(playerA);
+
+            gameController.PlayCard(playerA);
+
+            mockListener.Verify();
+        }
+
         private static Cards TestCards()
         {
             return new Cards(new List<Card>
