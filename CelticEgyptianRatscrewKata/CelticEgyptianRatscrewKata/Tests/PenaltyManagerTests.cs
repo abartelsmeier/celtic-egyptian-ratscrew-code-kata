@@ -29,6 +29,19 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             Assert.That(penalty, Is.EqualTo(Penalty.None));
         }
+
+        [Test]
+        public void CreatePenaltyManagerAndImposePlayOutOfTurnPenalty()
+        {
+            Player playerA = new Player("PlayerA");
+            List<IPlayer> players = new List<IPlayer> { playerA };
+            PenaltyManager penaltyManager = new PenaltyManager(players);
+
+            penaltyManager.ImposePenalty(playerA, Penalty.PlayedOutOfTurn);
+
+            Penalty imposedPenalty = penaltyManager.HasPenalty(playerA);
+            Assert.That(imposedPenalty, Is.EqualTo(Penalty.PlayedOutOfTurn));
+        }
     }
 
     public enum Penalty
