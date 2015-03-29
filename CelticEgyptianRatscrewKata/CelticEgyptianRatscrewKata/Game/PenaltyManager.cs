@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using CelticEgyptianRatscrewKata.Tests;
 
 namespace CelticEgyptianRatscrewKata.Game
 {
