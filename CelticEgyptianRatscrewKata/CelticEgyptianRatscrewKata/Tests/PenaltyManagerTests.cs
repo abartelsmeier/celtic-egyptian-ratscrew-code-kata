@@ -73,5 +73,18 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             if (_penalties.ContainsKey(player)) _penalties[player] = penalty;
         }
+
+        public void ClearPenalty(IPlayer player)
+        {
+            if (_penalties.ContainsKey(player)) _penalties[player] = Penalty.None;
+        }
+
+        public void ClearAllPenalties()
+        {
+            foreach (var player in _penalties.Keys)
+            {
+                _penalties[player] = Penalty.None;
+            }
+        }
     }
 }
