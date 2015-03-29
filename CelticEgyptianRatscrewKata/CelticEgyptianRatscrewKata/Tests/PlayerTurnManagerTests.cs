@@ -14,10 +14,16 @@ namespace CelticEgyptianRatscrewKata.Tests
         }
 
         [Test]
-        public void CreatePlayerTurnManagerAndTakeTurn()
+        public void CreatePlayerTurnManagerAndPlayCard()
         {
-            List<IPlayer> players = new List<IPlayer>();
+            Player playerA = new Player("PlayerA");
+            List<IPlayer> players = new List<IPlayer>{playerA};
             PlayerTurnManager playerTurnManager = new PlayerTurnManager(players);
+
+            PlayCardResult playResult = playerTurnManager.PlayCard(playerA);
+
+            PlayCardResult expectedResult = new PlayCardResult(TurnResult.Success, Penalty.None);
+            Assert.That(playResult, Is.EqualTo(expectedResult));
         }
     }
 
