@@ -16,6 +16,16 @@ namespace CelticEgyptianRatscrewKata.Tests
             List<IPlayer> players = new List<IPlayer>(); 
             PenaltyManager penaltyManager = new PenaltyManager(players);
         }
+
+        [Test]
+        public void CreatePenaltyManagerAndTakeTurn()
+        {
+            Player playerA = new Player("PlayerA");
+            List<IPlayer> players = new List<IPlayer>{playerA};
+            PenaltyManager penaltyManager = new PenaltyManager(players);
+
+            Penalty penalty = penaltyManager.HasPenalty(playerA);
+        }
     }
 
     public class PenaltyManager
