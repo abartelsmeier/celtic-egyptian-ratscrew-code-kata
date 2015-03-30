@@ -39,9 +39,10 @@ namespace CelticEgyptianRatscrewKata.ActionManagement
 
                 case Penalty.None:
                     return AttemptTakeTurn(player);
-            }
 
-            throw new Exception("Unhandled HasPenalty Result");
+                default:
+                    throw new Exception("Unhandled HasPenalty Result");
+            }
         }
 
         private PlayerTurnResult AttemptTakeTurn(IPlayer player)
@@ -58,9 +59,20 @@ namespace CelticEgyptianRatscrewKata.ActionManagement
             {
                 _penaltyManager.ImposePenalty(player, Penalty.PlayedOutOfTurn);
                 message = String.Format("{0} recieves out of turn penalty", player.Name);
+                message += CheckForDeadlock();
             }
 
             return new PlayerTurnResult(playedCard, message);
+        }
+
+        private string CheckForDeadlock()
+        {
+            if (_penaltyManager.IsDeadlock())
+            {
+                _penaltyManager.ClearAllPenalties();
+                return "\nPenalty deadlock! All penalties removed";
+            }
+            return "";
         }
 
         private bool IsPlayersTurn(IPlayer player)
