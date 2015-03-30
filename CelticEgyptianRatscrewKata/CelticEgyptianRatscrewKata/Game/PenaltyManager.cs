@@ -44,6 +44,7 @@ namespace CelticEgyptianRatscrewKata.Game
     {
         Null,
         None,
-        PlayedOutOfTurn
+        PlayedOutOfTurn,
+        IncorrectSnap
     }
 }
