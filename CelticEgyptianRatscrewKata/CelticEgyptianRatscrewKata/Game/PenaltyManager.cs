@@ -1,3 +1,4 @@
+using  System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,15 +35,15 @@ namespace CelticEgyptianRatscrewKata.Game
 
         public void ClearAllPenalties()
         {
-            foreach (var player in _penalties.Keys)
+            foreach (var key in _penalties.Keys.ToList())
             {
-                _penalties[player] = Penalty.None;
+                _penalties[key] = Penalty.None;
             }
         }
 
         public bool IsDeadlock()
         {
-            return _penalties.Any(x => x.Value == Penalty.None);
+            return _penalties.Values.All(x => x != Penalty.None);
         }
     }
 

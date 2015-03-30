@@ -26,6 +26,7 @@ namespace CelticEgyptianRatscrewKata.Game
                 return new PlayCardResult(TurnResult.Blocked, penalty);
 
             TurnResult result = TurnResult.Null;
+            Card playedCard = null;
 
             if (penalty == Penalty.None)
             {
@@ -34,10 +35,11 @@ namespace CelticEgyptianRatscrewKata.Game
                     _penaltyManager.ImposePenalty(player, Penalty.PlayedOutOfTurn);
                     return new PlayCardResult(TurnResult.Fail, Penalty.PlayedOutOfTurn); 
                 }
-                result = _gameController.PlayCard(player) != null ? TurnResult.Success : TurnResult.Null;
+                playedCard = _gameController.PlayCard(player);
+                result = playedCard != null ? TurnResult.Success : TurnResult.Null;
                 IncrementTurn();
             }
-            return new PlayCardResult(result, penalty);    
+            return new PlayCardResult(result, penalty, playedCard);    
         }
 
         private bool IsPlayersTurn(IPlayer player)
@@ -47,14 +49,22 @@ namespace CelticEgyptianRatscrewKata.Game
 
         private void IncrementTurn()
         {
-            _nextPlayer++;
-            if (_nextPlayer >= _gameController.Players.Count()) _nextPlayer = 0;
-            if (_penaltyManager.IsDeadlock())
+            while (true)
             {
-                _penaltyManager.ClearAllPenalties();
-                return;
-            }
+                _nextPlayer++;
+                if (_nextPlayer >= _gameController.Players.Count()) _nextPlayer = 0;
+                if (_penaltyManager.IsDeadlock())
+                {
+                    _penaltyManager.ClearAllPenalties();
+                    return;
+                }
+                if (_penaltyManager.HasPenalty(_gameController.Players.ElementAt(_nextPlayer)) != Penalty.None)
+                {
+                    continue;
+                }
 
+                break;
+            }
         }
     }
 }
