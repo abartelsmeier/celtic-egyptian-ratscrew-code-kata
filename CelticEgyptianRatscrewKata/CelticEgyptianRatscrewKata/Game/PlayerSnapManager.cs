@@ -1,6 +1,6 @@
 namespace CelticEgyptianRatscrewKata.Game
 {
-    public class PlayerSnapManager
+    public class PlayerSnapManager : IPlayerSnapManager
     {
         private readonly IGameController _gameController;
         private readonly IPenaltyManager _penaltyManager;

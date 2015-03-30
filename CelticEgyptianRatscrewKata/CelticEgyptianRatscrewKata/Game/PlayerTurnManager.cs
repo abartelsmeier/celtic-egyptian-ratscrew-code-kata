@@ -3,7 +3,7 @@ using CelticEgyptianRatscrewKata.Tests;
 
 namespace CelticEgyptianRatscrewKata.Game
 {
-    public class PlayerTurnManager
+    public class PlayerTurnManager : IPlayerTurnManager
     {
         private readonly IGameController _gameController;
         private readonly IPenaltyManager _penaltyManager;

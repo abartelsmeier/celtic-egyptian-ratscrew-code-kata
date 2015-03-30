@@ -52,6 +52,8 @@
     <Compile Include="Game\IGameController.cs" />
     <Compile Include="Game\IGameFactory.cs" />
     <Compile Include="Game\IPenaltyManager.cs" />
+    <Compile Include="Game\IPlayerSnapManager.cs" />
+    <Compile Include="Game\IPlayerTurnManager.cs" />
     <Compile Include="Game\LoggedGameController.cs" />
     <Compile Include="Game\PenaltyManager.cs" />
     <Compile Include="Game\PlayCardResult.cs" />
