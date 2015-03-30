@@ -55,6 +55,10 @@
     <Compile Include="ActionManagement\PlayerTurnManager.cs" />
     <Compile Include="ActionManagement\PlayerTurnResult.cs" />
     <Compile Include="Card.cs" />
+    <Compile Include="Game\IPenaltyGameState.cs" />
+    <Compile Include="Game\PenaltyGameState.cs" />
+    <Compile Include="Game\IPenaltyGameController.cs" />
+    <Compile Include="Game\PenaltyGameController.cs" />
     <Compile Include="Game\IGameController.cs" />
     <Compile Include="Game\IGameFactory.cs" />
     <Compile Include="Game\LoggedPenaltyGameController.cs" />

@@ -14,7 +14,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             Player playerA = new Player("PlayerA");
             List<IPlayer> players = new List<IPlayer> { playerA };
-            var gameMock = new Mock<IGameController>();
+            var gameMock = new Mock<IPenaltyGameController>();
             gameMock.Setup(x => x.Players).Returns(players);
             var penaltyManager = new PenaltyManager(gameMock.Object.Players);
 
@@ -26,7 +26,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             Player playerA = new Player("PlayerA");
             List<IPlayer> players = new List<IPlayer> { playerA };
-            var gameMock = new Mock<IGameController>();
+            var gameMock = new Mock<IPenaltyGameController>();
             gameMock.Setup(x => x.Players).Returns(players);
             gameMock.Setup(x => x.AttemptSnap(playerA)).Returns(true);
             var penaltyManager = new PenaltyManager(gameMock.Object.Players);

@@ -6,10 +6,10 @@ namespace CelticEgyptianRatscrewKata.ActionManagement
 {
     public class PlayerSnapManager : IPlayerSnapManager
     {
-        private readonly IGameController _gameController;
+        private readonly IPenaltyGameController _gameController;
         private readonly IPenaltyManager _penaltyManager;
 
-        public PlayerSnapManager(IGameController gameController, IPenaltyManager penaltyManager)
+        public PlayerSnapManager(IPenaltyGameController gameController, IPenaltyManager penaltyManager)
         {
             _gameController = gameController;
             _penaltyManager = penaltyManager;

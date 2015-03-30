@@ -6,13 +6,13 @@ namespace CelticEgyptianRatscrewKata.Game
 {
     public class LoggedPenaltyGameController : IGameController
     {
-        private readonly IGameController _gameController;
+        private readonly IPenaltyGameController _gameController;
         private IPenaltyManager _penaltyManager;
         private IPlayerTurnManager _playerTurnManager;
         private IPlayerSnapManager _playerSnapManager;
         private readonly ILog _log;
 
-        public LoggedPenaltyGameController(IGameController gameController, ILog log)
+        public LoggedPenaltyGameController(IPenaltyGameController gameController, ILog log)
         {
             _gameController = gameController;
             _log = log;

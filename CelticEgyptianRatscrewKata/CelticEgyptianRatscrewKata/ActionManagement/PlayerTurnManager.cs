@@ -7,11 +7,11 @@ namespace CelticEgyptianRatscrewKata.ActionManagement
 {
     public class PlayerTurnManager : IPlayerTurnManager
     {
-        private readonly IGameController _gameController;
+        private readonly IPenaltyGameController _gameController;
         private readonly IPenaltyManager _penaltyManager;
         private int _nextPlayer;
 
-        public PlayerTurnManager(IGameController gameController, IPenaltyManager penaltyManager)
+        public PlayerTurnManager(IPenaltyGameController gameController, IPenaltyManager penaltyManager)
         {
             _gameController = gameController;
             _penaltyManager = penaltyManager;
@@ -57,6 +57,7 @@ namespace CelticEgyptianRatscrewKata.ActionManagement
             }
             else
             {
+                _gameController.PlayCardOutOfTurn(player);
                 _penaltyManager.ImposePenalty(player, Penalty.PlayedOutOfTurn);
                 message = String.Format("{0} recieves out of turn penalty", player.Name);
                 message += CheckForDeadlock();
