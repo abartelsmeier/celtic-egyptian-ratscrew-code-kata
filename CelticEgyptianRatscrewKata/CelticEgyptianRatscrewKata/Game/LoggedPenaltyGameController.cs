@@ -27,9 +27,7 @@ namespace CelticEgyptianRatscrewKata.Game
         {
             var playResult = _playerTurnManager.PlayCard(player);
 
-            var playLogMessage = _playerTurnManager.PlayCard(player);
-
-            _log.Log(playLogMessage.LogMessage);
+            _log.Log(playResult.LogMessage);
             
             LogGameState();
             return playResult.PlayedCard;
