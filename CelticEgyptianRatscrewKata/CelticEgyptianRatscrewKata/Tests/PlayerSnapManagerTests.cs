@@ -22,6 +22,23 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             PlayerSnapManager playerSnapManager = new PlayerSnapManager(gameMock.Object, penaltyManager);
         }
+
+        [Test]
+        public void CreatePlayerSnapManagerAndAttemptSnap()
+        {
+            Player playerA = new Player("PlayerA");
+            List<IPlayer> players = new List<IPlayer> { playerA };
+            var gameMock = new Mock<IGameController>();
+            gameMock.Setup(x => x.Players).Returns(players);
+            gameMock.Setup(x => x.AttemptSnap(playerA)).Returns(true);
+            var penaltyManager = new PenaltyManager(gameMock.Object.Players);
+            PlayerSnapManager playerSnapManager = new PlayerSnapManager(gameMock.Object, penaltyManager);
+
+            bool result = playerSnapManager.AttemptSnap(playerA);
+
+            bool expectedResult = true;
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
     }
 
     public class PlayerSnapManager
