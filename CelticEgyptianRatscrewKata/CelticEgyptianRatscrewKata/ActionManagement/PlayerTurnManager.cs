@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using CelticEgyptianRatscrewKata.Game;
+using CelticEgyptianRatscrewKata.PenaltyGame;
 using CelticEgyptianRatscrewKata.PenaltyManagement;
 
 namespace CelticEgyptianRatscrewKata.ActionManagement

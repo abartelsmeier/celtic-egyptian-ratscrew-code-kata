@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using CelticEgyptianRatscrewKata.ActionManagement;
+using CelticEgyptianRatscrewKata.Game;
 using CelticEgyptianRatscrewKata.PenaltyManagement;
 
-namespace CelticEgyptianRatscrewKata.Game
+namespace CelticEgyptianRatscrewKata.PenaltyGame
 {
     public class LoggedPenaltyGameController : IGameController
     {

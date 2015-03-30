@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using CelticEgyptianRatscrewKata.Game;
 using CelticEgyptianRatscrewKata.GameSetup;
 using CelticEgyptianRatscrewKata.SnapRules;
 
-namespace CelticEgyptianRatscrewKata.Game
+namespace CelticEgyptianRatscrewKata.PenaltyGame
 {
     /// <summary>
     /// Controls a game of Celtic Egyptian Ratscrew.

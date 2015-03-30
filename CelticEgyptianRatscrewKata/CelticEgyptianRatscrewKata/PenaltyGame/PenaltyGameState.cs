@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
-namespace CelticEgyptianRatscrewKata.Game
+namespace CelticEgyptianRatscrewKata.PenaltyGame
 {
     /// <summary>
     /// Represents the state of the game at any point.

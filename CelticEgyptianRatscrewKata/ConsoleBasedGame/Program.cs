@@ -1,4 +1,4 @@
-using CelticEgyptianRatscrewKata.Game;
+using CelticEgyptianRatscrewKata.PenaltyGame;
 
 namespace ConsoleBasedGame
 {
@@ -6,7 +6,7 @@ namespace ConsoleBasedGame
     {
         static void Main()
         {
-            var ratscrewGame = new RatscrewGame(new RatscrewGameFactory(), new ConsoleUserInterface());
+            var ratscrewGame = new RatscrewGame(new RatscrewPenaltyGameFactory(), new ConsoleUserInterface());
             ratscrewGame.Play(new ConsoleLog());
         }
     }

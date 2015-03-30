@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CelticEgyptianRatscrewKata.Game
+namespace CelticEgyptianRatscrewKata.PenaltyGame
 {
     public interface IPenaltyGameState
     {

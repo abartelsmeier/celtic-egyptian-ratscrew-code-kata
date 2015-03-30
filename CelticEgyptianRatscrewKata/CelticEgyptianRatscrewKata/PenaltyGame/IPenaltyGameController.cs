@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using CelticEgyptianRatscrewKata.Game;
 
-namespace CelticEgyptianRatscrewKata.Game
+namespace CelticEgyptianRatscrewKata.PenaltyGame
 {
     public interface IPenaltyGameController
     {
