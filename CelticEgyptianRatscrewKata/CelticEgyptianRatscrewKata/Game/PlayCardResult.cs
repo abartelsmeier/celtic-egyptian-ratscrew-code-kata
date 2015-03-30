@@ -6,9 +6,14 @@ namespace CelticEgyptianRatscrewKata.Game
     {
         public TurnResult TurnResult { get; private set; }
         public Penalty Penalty { get; private set; }
+        public Card PlayedCard { get; private set; }
 
-        public PlayCardResult(TurnResult turnResult, Penalty penalty)
+        public PlayCardResult(TurnResult turnResult, Penalty penalty):this(turnResult,penalty,null)
         {
+        }
+        public PlayCardResult(TurnResult turnResult, Penalty penalty, Card card)
+        {
+            PlayedCard = card;
             TurnResult = turnResult;
             Penalty = penalty;
         }

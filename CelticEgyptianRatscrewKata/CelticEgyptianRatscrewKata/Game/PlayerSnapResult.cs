@@ -2,18 +2,18 @@ namespace CelticEgyptianRatscrewKata.Game
 {
     public class PlayerSnapResult
     {
-        public SnapResult _snapResult { get; private set; }
-        public Penalty _penalty { get; private set; }
+        public SnapResult SnapResult { get; private set; }
+        public Penalty Penalty { get; private set; }
 
         public PlayerSnapResult(SnapResult snapResult, Penalty penalty)
         {
-            _snapResult = snapResult;
-            _penalty = penalty;
+            SnapResult = snapResult;
+            Penalty = penalty;
         }
         #region Equality Members
         protected bool Equals(PlayerSnapResult other)
         {
-            return _snapResult == other._snapResult && _penalty == other._penalty;
+            return SnapResult == other.SnapResult && Penalty == other.Penalty;
         }
 
         public override bool Equals(object obj)
@@ -28,7 +28,7 @@ namespace CelticEgyptianRatscrewKata.Game
         {
             unchecked
             {
-                return ((int) _snapResult*397) ^ (int) _penalty;
+                return ((int) SnapResult*397) ^ (int) Penalty;
             }
         }
         #endregion
