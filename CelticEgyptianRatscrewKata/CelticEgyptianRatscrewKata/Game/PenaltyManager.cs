@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CelticEgyptianRatscrewKata.Game
 {
@@ -37,6 +38,11 @@ namespace CelticEgyptianRatscrewKata.Game
             {
                 _penalties[player] = Penalty.None;
             }
+        }
+
+        public bool IsDeadlock()
+        {
+            return _penalties.Any(x => x.Value == Penalty.None);
         }
     }
 

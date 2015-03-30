@@ -49,6 +49,12 @@ namespace CelticEgyptianRatscrewKata.Game
         {
             _nextPlayer++;
             if (_nextPlayer >= _gameController.Players.Count()) _nextPlayer = 0;
+            if (_penaltyManager.IsDeadlock())
+            {
+                _penaltyManager.ClearAllPenalties();
+                return;
+            }
+
         }
     }
 }

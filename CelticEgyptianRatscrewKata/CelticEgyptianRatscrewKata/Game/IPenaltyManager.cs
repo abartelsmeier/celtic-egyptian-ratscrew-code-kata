@@ -6,5 +6,6 @@ namespace CelticEgyptianRatscrewKata.Game
         void ImposePenalty(IPlayer player, Penalty penalty);
         void ClearPenalty(IPlayer player);
         void ClearAllPenalties();
+        bool IsDeadlock();
     }
 }
