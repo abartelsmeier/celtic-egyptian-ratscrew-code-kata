@@ -16,7 +16,7 @@ namespace CelticEgyptianRatscrewKata.Tests
             gameMock.Setup(x => x.Players).Returns(players);
             var penaltyManager = new PenaltyManager(gameMock.Object.Players);
 
-            PlayerTurnManager playerTurnManager = new PlayerTurnManager(gameMock.Object, penaltyManager);
+            var playerTurnManager = new PlayerTurnManager(gameMock.Object, penaltyManager);
         }
 
         [Test]
@@ -24,15 +24,16 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             Player playerA = new Player("PlayerA");
             List<IPlayer> players = new List<IPlayer>{playerA};
+            Card aceOfClubs = new Card(Suit.Clubs, Rank.Ace);
             var gameMock = new Mock<IGameController>();
             gameMock.Setup(x => x.Players).Returns(players);
-            gameMock.Setup(x => x.PlayCard(playerA)).Returns(new Card(Suit.Clubs, Rank.Ace));
+            gameMock.Setup(x => x.PlayCard(playerA)).Returns(aceOfClubs);
             var penaltyManager = new PenaltyManager(gameMock.Object.Players);
-            PlayerTurnManager playerTurnManager = new PlayerTurnManager(gameMock.Object, penaltyManager);
+            var playerTurnManager = new PlayerTurnManager(gameMock.Object, penaltyManager);
 
-            PlayCardResult playResult = playerTurnManager.PlayCard(playerA);
+            var playResult = playerTurnManager.PlayCard(playerA);
 
-            PlayCardResult expectedResult = new PlayCardResult(TurnResult.Success, Penalty.None);
+            var expectedResult = new PlayerTurnResult(aceOfClubs, "PlayerA played Card Ace of Clubs");
             Assert.That(playResult, Is.EqualTo(expectedResult));
         }
     }

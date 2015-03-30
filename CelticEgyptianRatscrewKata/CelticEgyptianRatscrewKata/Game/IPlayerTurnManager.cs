@@ -2,6 +2,6 @@ namespace CelticEgyptianRatscrewKata.Game
 {
     public interface IPlayerTurnManager
     {
-        PlayCardResult PlayCard(IPlayer player);
+        PlayerTurnResult PlayCard(IPlayer player);
     }
 }

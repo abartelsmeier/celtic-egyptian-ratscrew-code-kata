@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using CelticEgyptianRatscrewKata.Tests;
 
@@ -16,30 +17,49 @@ namespace CelticEgyptianRatscrewKata.Game
             _nextPlayer = 0;
         }
 
-        public PlayCardResult PlayCard(IPlayer player)
+        public PlayerTurnResult PlayCard(IPlayer player)
         {
-            Penalty penalty = _penaltyManager.HasPenalty(player);
-            if (penalty == Penalty.Null)
-                return new PlayCardResult(TurnResult.PlayerNotFound, Penalty.Null);
+            string logMessage;
+            var penalty = _penaltyManager.HasPenalty(player);
 
-            if (penalty != Penalty.None)
-                return new PlayCardResult(TurnResult.Blocked, penalty);
-
-            TurnResult result = TurnResult.Null;
-            Card playedCard = null;
-
-            if (penalty == Penalty.None)
+            switch (penalty)
             {
-                if (!IsPlayersTurn(player))
-                {
-                    _penaltyManager.ImposePenalty(player, Penalty.PlayedOutOfTurn);
-                    return new PlayCardResult(TurnResult.Fail, Penalty.PlayedOutOfTurn); 
-                }
-                playedCard = _gameController.PlayCard(player);
-                result = playedCard != null ? TurnResult.Success : TurnResult.Null;
-                IncrementTurn();
+                case Penalty.Null:
+                    logMessage = String.Format("{0} not found in penalty manager", player.Name);
+                    return new PlayerTurnResult(null, logMessage);
+
+                case Penalty.PlayedOutOfTurn:
+                    logMessage = String.Format("{0} is blocked (played out of turn)", player.Name);
+                    return new PlayerTurnResult(null, logMessage);
+
+                case Penalty.IncorrectSnap:
+                    logMessage = String.Format("{0} is blocked (incorrect snap)", player.Name);
+                    return new PlayerTurnResult(null, logMessage);
+
+                case Penalty.None:
+                    return AttemptTakeTurn(player);
             }
-            return new PlayCardResult(result, penalty, playedCard);    
+
+            throw new Exception("Unhandled HasPenalty Result");
+        }
+
+        private PlayerTurnResult AttemptTakeTurn(IPlayer player)
+        {
+            Card playedCard = null;
+            string message;
+            if (IsPlayersTurn(player))
+            {
+                playedCard = _gameController.PlayCard(player);
+                IncrementTurn();
+                message = String.Format("{0} played {1}", player.Name, playedCard);
+            }
+            else
+            {
+                _penaltyManager.ImposePenalty(player, Penalty.PlayedOutOfTurn);
+                message = String.Format("{0} recieves out of turn penalty", player.Name);
+            }
+
+            return new PlayerTurnResult(playedCard, message);
         }
 
         private bool IsPlayersTurn(IPlayer player)

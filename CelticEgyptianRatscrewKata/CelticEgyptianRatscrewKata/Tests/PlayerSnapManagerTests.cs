@@ -32,7 +32,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             PlayerSnapResult result = playerSnapManager.AttemptSnap(playerA);
 
-            PlayerSnapResult expectedResult = new PlayerSnapResult(SnapResult.Success, Penalty.None);
+            PlayerSnapResult expectedResult = new PlayerSnapResult(true, "PlayerA snaps and wins stack");
             Assert.That(result, Is.EqualTo(expectedResult));
         }
     }

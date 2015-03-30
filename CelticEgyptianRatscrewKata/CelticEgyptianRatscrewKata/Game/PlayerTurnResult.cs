@@ -1,20 +1,23 @@
+using CelticEgyptianRatscrewKata.Tests;
+
 namespace CelticEgyptianRatscrewKata.Game
 {
-    public class PlayerSnapResult
+    public class PlayerTurnResult
     {
-        public bool State { get; private set; }
+        public Card PlayedCard { get; private set; }
         public string LogMessage { get; private set; }
-
-        public PlayerSnapResult(bool state, string logMessage)
+        
+        public PlayerTurnResult(Card card, string logMessage)
         {
-            State = state;
             LogMessage = logMessage;
+            PlayedCard = card;
         }
+
         #region Equality Members
 
-        protected bool Equals(PlayerSnapResult other)
+        protected bool Equals(PlayerTurnResult other)
         {
-            return State.Equals(other.State) && string.Equals(LogMessage, other.LogMessage);
+            return Equals(PlayedCard, other.PlayedCard) && string.Equals(LogMessage, other.LogMessage);
         }
 
         public override bool Equals(object obj)
@@ -22,14 +25,14 @@ namespace CelticEgyptianRatscrewKata.Game
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((PlayerSnapResult) obj);
+            return Equals((PlayerTurnResult) obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return (State.GetHashCode()*397) ^ (LogMessage != null ? LogMessage.GetHashCode() : 0);
+                return ((PlayedCard != null ? PlayedCard.GetHashCode() : 0)*397) ^ (LogMessage != null ? LogMessage.GetHashCode() : 0);
             }
         }
 

@@ -25,12 +25,9 @@ namespace CelticEgyptianRatscrewKata.Game
         {
             var playResult = _playerTurnManager.PlayCard(player);
 
-            if(playResult.TurnResult == TurnResult.Success)
-                _log.Log(string.Format("{0} has played the {1}", player.Name, playResult.PlayedCard));
-            else if (playResult.TurnResult == TurnResult.Fail)
-                _log.Log(string.Format("{0} has played out of turn", player.Name));
-            else if (playResult.TurnResult == TurnResult.Blocked)
-                _log.Log(string.Format("{0} is blocked from playing", player.Name));
+            var playLogMessage = _playerTurnManager.PlayCard(player);
+
+            _log.Log(playLogMessage.LogMessage);
             
             LogGameState();
             return playResult.PlayedCard;
@@ -39,12 +36,11 @@ namespace CelticEgyptianRatscrewKata.Game
         public bool AttemptSnap(IPlayer player)
         {
             var snapResult = _playerSnapManager.AttemptSnap(player);
-            var wasValidSnap = snapResult.SnapResult == SnapResult.Success; 
-            var snapLogMessage = wasValidSnap ? "won the stack" : "did not win the stack";
-            _log.Log(string.Format("{0} {1}", player.Name, snapLogMessage));
-            if (wasValidSnap) _penaltyManager.ClearAllPenalties();
+
+            _log.Log(snapResult.LogMessage);
+            
             LogGameState();
-            return wasValidSnap;
+            return snapResult.State;
         }
 
         public void StartGame(Cards deck)

@@ -46,12 +46,4 @@ namespace CelticEgyptianRatscrewKata.Game
             return _penalties.Values.All(x => x != Penalty.None);
         }
     }
-
-    public enum Penalty
-    {
-        Null,
-        None,
-        PlayedOutOfTurn,
-        IncorrectSnap
-    }
 }
