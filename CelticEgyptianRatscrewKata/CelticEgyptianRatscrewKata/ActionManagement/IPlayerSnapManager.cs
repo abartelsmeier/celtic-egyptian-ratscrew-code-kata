@@ -1,4 +1,6 @@
-namespace CelticEgyptianRatscrewKata.Game
+using CelticEgyptianRatscrewKata.Game;
+
+namespace CelticEgyptianRatscrewKata.ActionManagement
 {
     public interface IPlayerSnapManager
     {

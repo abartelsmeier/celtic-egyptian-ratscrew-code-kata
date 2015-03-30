@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CelticEgyptianRatscrewKata.Game;
+using CelticEgyptianRatscrewKata.PenaltyManagement;
 using NUnit.Framework;
 
 namespace CelticEgyptianRatscrewKata.Tests

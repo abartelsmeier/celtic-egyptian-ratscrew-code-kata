@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
-using CelticEgyptianRatscrewKata.Tests;
+using CelticEgyptianRatscrewKata.Game;
+using CelticEgyptianRatscrewKata.PenaltyManagement;
 
-namespace CelticEgyptianRatscrewKata.Game
+namespace CelticEgyptianRatscrewKata.ActionManagement
 {
     public class PlayerTurnManager : IPlayerTurnManager
     {

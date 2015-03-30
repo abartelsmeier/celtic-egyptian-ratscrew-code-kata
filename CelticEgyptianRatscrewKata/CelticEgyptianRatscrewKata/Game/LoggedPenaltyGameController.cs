@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using CelticEgyptianRatscrewKata.ActionManagement;
+using CelticEgyptianRatscrewKata.PenaltyManagement;
 
 namespace CelticEgyptianRatscrewKata.Game
 {

@@ -1,4 +1,4 @@
-namespace CelticEgyptianRatscrewKata.Game
+namespace CelticEgyptianRatscrewKata.ActionManagement
 {
     public class PlayerSnapResult
     {

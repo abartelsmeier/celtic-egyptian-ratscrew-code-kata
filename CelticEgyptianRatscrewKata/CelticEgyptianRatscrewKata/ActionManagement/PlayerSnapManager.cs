@@ -1,6 +1,8 @@
 using System;
+using CelticEgyptianRatscrewKata.Game;
+using CelticEgyptianRatscrewKata.PenaltyManagement;
 
-namespace CelticEgyptianRatscrewKata.Game
+namespace CelticEgyptianRatscrewKata.ActionManagement
 {
     public class PlayerSnapManager : IPlayerSnapManager
     {

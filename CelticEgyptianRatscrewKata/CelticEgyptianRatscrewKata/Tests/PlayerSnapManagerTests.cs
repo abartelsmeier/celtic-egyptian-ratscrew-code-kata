@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using CelticEgyptianRatscrewKata.ActionManagement;
 using CelticEgyptianRatscrewKata.Game;
+using CelticEgyptianRatscrewKata.PenaltyManagement;
 using Moq;
 using NUnit.Framework;
 

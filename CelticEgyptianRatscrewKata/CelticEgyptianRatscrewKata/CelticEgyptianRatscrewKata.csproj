@@ -48,23 +48,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionManagement\IPlayerSnapManager.cs" />
+    <Compile Include="ActionManagement\IPlayerTurnManager.cs" />
+    <Compile Include="ActionManagement\PlayerSnapManager.cs" />
+    <Compile Include="ActionManagement\PlayerSnapResult.cs" />
+    <Compile Include="ActionManagement\PlayerTurnManager.cs" />
+    <Compile Include="ActionManagement\PlayerTurnResult.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Game\IGameController.cs" />
     <Compile Include="Game\IGameFactory.cs" />
-    <Compile Include="Game\IPenaltyManager.cs" />
-    <Compile Include="Game\IPlayerSnapManager.cs" />
-    <Compile Include="Game\IPlayerTurnManager.cs" />
     <Compile Include="Game\LoggedPenaltyGameController.cs" />
     <Compile Include="Game\LoggedGameController.cs" />
-    <Compile Include="Game\Penalty.cs" />
-    <Compile Include="Game\PenaltyManager.cs" />
-    <Compile Include="Game\PlayerTurnResult.cs" />
-    <Compile Include="Game\PlayerSnapManager.cs" />
-    <Compile Include="Game\PlayerSnapResult.cs" />
-    <Compile Include="Game\PlayerTurnManager.cs" />
-    <Compile Include="Game\SnapResult.cs" />
-    <Compile Include="Game\TurnResult.cs" />
     <Compile Include="ILog.cs" />
+    <Compile Include="PenaltyManagement\IPenaltyManager.cs" />
+    <Compile Include="PenaltyManagement\Penalty.cs" />
+    <Compile Include="PenaltyManagement\PenaltyManager.cs" />
     <Compile Include="SnapRules\DarkQueenSnapRule.cs" />
     <Compile Include="GameSetup\Dealer.cs" />
     <Compile Include="GameSetup\IDealer.cs" />
@@ -100,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

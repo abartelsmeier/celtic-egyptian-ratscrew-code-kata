@@ -1,4 +1,4 @@
-namespace CelticEgyptianRatscrewKata.Game
+namespace CelticEgyptianRatscrewKata.PenaltyManagement
 {
     public enum Penalty
     {

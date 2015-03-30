@@ -1,6 +1,4 @@
-using CelticEgyptianRatscrewKata.Tests;
-
-namespace CelticEgyptianRatscrewKata.Game
+namespace CelticEgyptianRatscrewKata.ActionManagement
 {
     public class PlayerTurnResult
     {

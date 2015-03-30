@@ -1,4 +1,6 @@
-namespace CelticEgyptianRatscrewKata.Game
+using CelticEgyptianRatscrewKata.Game;
+
+namespace CelticEgyptianRatscrewKata.PenaltyManagement
 {
     public interface IPenaltyManager
     {
