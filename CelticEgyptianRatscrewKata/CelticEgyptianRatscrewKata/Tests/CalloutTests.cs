@@ -14,6 +14,16 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             var callout = new Callout();
         }
+
+        [Test]
+        public void CreateCalloutInstanceAndIncrementRank()
+        {
+            var callout = new Callout();
+
+            callout.IncrementRank();
+
+            Assert.That(callout.CurrentRank, Is.EqualTo(Rank.Two));
+        }
     }
 
     public class Callout
