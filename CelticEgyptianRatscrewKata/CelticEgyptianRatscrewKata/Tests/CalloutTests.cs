@@ -28,5 +28,11 @@ namespace CelticEgyptianRatscrewKata.Tests
 
     public class Callout
     {
+        public Rank CurrentRank { get; private set; }
+
+        public void IncrementRank()
+        {
+            CurrentRank++;
+        }
     }
 }
