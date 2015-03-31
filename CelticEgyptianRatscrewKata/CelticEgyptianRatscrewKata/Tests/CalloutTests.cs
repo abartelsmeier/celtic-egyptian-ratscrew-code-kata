@@ -68,17 +68,17 @@ namespace CelticEgyptianRatscrewKata.Tests
 
         public void AddPlayer(string name)
         {
-            throw new NotImplementedException();
+            _playerSequence.AddPlayer(name);
         }
 
         public void AdvanceToNextPlayer()
         {
-            throw new NotImplementedException();
+            _playerSequence.AdvanceToNextPlayer();
         }
 
         public bool IsCurrentPlayer(string name)
         {
-            throw new NotImplementedException();
+            _playerSequence.IsCurrentPlayer(name);
         }
     }
 }
