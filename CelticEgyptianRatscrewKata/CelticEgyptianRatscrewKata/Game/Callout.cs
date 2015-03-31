@@ -34,7 +34,7 @@ namespace CelticEgyptianRatscrewKata.Game
 
         public bool IsCurrentPlayer(string name)
         {
-            _playerSequence.IsCurrentPlayer(name);
+           return _playerSequence.IsCurrentPlayer(name);
         }
     }
 }
