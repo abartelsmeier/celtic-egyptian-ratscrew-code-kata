@@ -29,6 +29,13 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
 
     public class CallOutSnapRule : ISnapRule
     {
+        private readonly ICallout _callout;
+
+        public CallOutSnapRule(ICallout callout)
+        {
+            _callout = callout;
+        }
+
         public bool IsSnapValid(Cards cardStack)
         {
             return false;
