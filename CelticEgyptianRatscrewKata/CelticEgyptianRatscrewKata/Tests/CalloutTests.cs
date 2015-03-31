@@ -74,6 +74,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         public void AdvanceToNextPlayer()
         {
             _playerSequence.AdvanceToNextPlayer();
+            IncrementRank();
         }
 
         public bool IsCurrentPlayer(string name)
