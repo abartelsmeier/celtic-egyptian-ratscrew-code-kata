@@ -1,3 +1,5 @@
+using System;
+
 namespace CelticEgyptianRatscrewKata.Game
 {
     public class LoggedCallout : IPlayerSequence, ICallout
@@ -30,8 +32,10 @@ namespace CelticEgyptianRatscrewKata.Game
 
         public void AdvanceToNextPlayer()
         {
-            _playerSequence.AdvanceToNextPlayer();
+            _log.Log(String.Format("Callout: {0}", CurrentRank));
             IncrementRank();
+            _playerSequence.AdvanceToNextPlayer();
+            
         }
 
         public bool IsCurrentPlayer(string name)
