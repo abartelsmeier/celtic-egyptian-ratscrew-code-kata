@@ -45,7 +45,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         }
     }
 
-    public class Callout
+    public class Callout : IPlayerSequence
     {
         private readonly IPlayerSequence _playerSequence;
         public Rank CurrentRank { get; private set; }
@@ -64,6 +64,21 @@ namespace CelticEgyptianRatscrewKata.Tests
         private void ResetRank()
         {
             CurrentRank = Rank.Ace;
+        }
+
+        public void AddPlayer(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AdvanceToNextPlayer()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsCurrentPlayer(string name)
+        {
+            throw new NotImplementedException();
         }
     }
 }
