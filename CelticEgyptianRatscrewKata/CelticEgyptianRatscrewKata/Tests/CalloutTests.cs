@@ -10,13 +10,13 @@ namespace CelticEgyptianRatscrewKata.Tests
     class CalloutTests
     {
         [Test]
-        public void CreateCalloutInstance()
+        public void CreateCallout()
         {
             var callout = new Callout();
         }
 
         [Test]
-        public void CreateCalloutInstanceAndIncrementRank()
+        public void CreateCalloutAndIncrementRank()
         {
             var callout = new Callout();
 
@@ -26,7 +26,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         }
 
         [Test]
-        public void CreateCalloutInstanceAndIncrementRankFullCycle()
+        public void CreateCalloutAndIncrementRankFullCycle()
         {
             var callout = new Callout();
 
