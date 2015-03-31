@@ -12,7 +12,7 @@ namespace CelticEgyptianRatscrewKata.Game
             _log = log;
         }
 
-        private void IncrementRank()
+        public void IncrementRank()
         {
             CurrentRank++;
             if (CurrentRank > Rank.King) ResetRank();
