@@ -15,4 +15,8 @@ namespace CelticEgyptianRatscrewKata.Tests
             var callout = new Callout();
         }
     }
+
+    public class Callout
+    {
+    }
 }
