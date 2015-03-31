@@ -80,6 +80,7 @@
     <Compile Include="Tests\LoggedCalloutTests.cs" />
     <Compile Include="Tests\EndToEndPenaltyTests.cs" />
     <Compile Include="Tests\PlayerSequenceTests.cs" />
+    <Compile Include="Tests\SnapRules\CalloutSnapTests.cs" />
     <Compile Include="Tests\SnapRules\DarkQueenRuleTests.cs" />
     <Compile Include="Tests\SnapRules\SandwichSnapRuleTests.cs" />
     <Compile Include="Tests\SnapRules\StandardSnapRuleTests.cs" />
