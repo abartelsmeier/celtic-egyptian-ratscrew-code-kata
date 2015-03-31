@@ -25,6 +25,27 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
 
             Assert.IsFalse(result);
         }
+
+        [Test]
+        public void ReturnsTrueOnSingleCardStack()
+        {
+            var playerSequence = Substitute.For<IPlayerSequence>();
+            var log = Substitute.For<ILog>();
+            var callout = new LoggedCallout(playerSequence, log);
+            var snapRule = new CallOutSnapRule(callout);
+
+            bool result = snapRule.IsSnapValid(SingleCardStack());
+
+            Assert.IsTrue(result);
+        }
+
+        public static Cards SingleCardStack()
+        {
+            return new Cards(new List<Card>
+                             {
+                                 new Card(Suit.Clubs, Rank.Ace);
+                             });
+        }
     }
 
     public class CallOutSnapRule : ISnapRule
