@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CelticEgyptianRatscrewKata.Game;
 using CelticEgyptianRatscrewKata.SnapRules;
 using NSubstitute;
-using NSubstitute.Routing.Handlers;
 using NUnit.Framework;
 
 namespace CelticEgyptianRatscrewKata.Tests.SnapRules
