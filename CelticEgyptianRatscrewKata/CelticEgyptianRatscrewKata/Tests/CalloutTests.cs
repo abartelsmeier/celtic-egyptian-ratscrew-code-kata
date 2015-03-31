@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CelticEgyptianRatscrewKata.Game;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace CelticEgyptianRatscrewKata.Tests
@@ -12,7 +14,9 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void CreateCallout()
         {
-            var callout = new Callout();
+            var playerSequence = Substitute.For<IPlayerSequence>();
+
+            var callout = new Callout(playerSequence);
         }
 
         [Test]
