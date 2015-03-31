@@ -46,6 +46,12 @@ namespace CelticEgyptianRatscrewKata.Tests
         public void IncrementRank()
         {
             CurrentRank++;
+            if (CurrentRank > Rank.King) ResetRank();
+        }
+
+        private void ResetRank()
+        {
+            CurrentRank = Rank.Ace;
         }
     }
 }
