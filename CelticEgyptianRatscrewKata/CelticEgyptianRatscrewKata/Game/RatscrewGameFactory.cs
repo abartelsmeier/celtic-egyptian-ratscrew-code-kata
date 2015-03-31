@@ -12,9 +12,9 @@ namespace CelticEgyptianRatscrewKata.Game
             
             ISnapRule[] rules =
             {
-                //new DarkQueenSnapRule(),
-                //new SandwichSnapRule(),
-                //new StandardSnapRule(),
+                new DarkQueenSnapRule(),
+                new SandwichSnapRule(),
+                new StandardSnapRule(),
                 new CallOutSnapRule(callout)
             };
 
