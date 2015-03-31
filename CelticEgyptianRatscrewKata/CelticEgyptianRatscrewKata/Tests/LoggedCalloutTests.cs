@@ -15,15 +15,17 @@ namespace CelticEgyptianRatscrewKata.Tests
         public void CreateCallout()
         {
             var playerSequence = Substitute.For<IPlayerSequence>();
+            var log = Substitute.For<ILog>();
 
-            var callout = new LoggedCallout(playerSequence);
+            var callout = new LoggedCallout(playerSequence, log);
         }
 
         [Test]
         public void CreateCalloutAndIncrementRank()
         {
             var playerSequence = Substitute.For<IPlayerSequence>();
-            var callout = new LoggedCallout(playerSequence);
+            var log = Substitute.For<ILog>();
+            var callout = new LoggedCallout(playerSequence, log);
 
             callout.IncrementRank();
 
@@ -34,7 +36,8 @@ namespace CelticEgyptianRatscrewKata.Tests
         public void CreateCalloutAndIncrementRankFullCycle()
         {
             var playerSequence = Substitute.For<IPlayerSequence>();
-            var callout = new LoggedCallout(playerSequence);
+            var log = Substitute.For<ILog>();
+            var callout = new LoggedCallout(playerSequence, log);
 
             foreach (var rank in Enum.GetNames(typeof (Rank)))
             {
