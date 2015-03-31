@@ -43,7 +43,7 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
         {
             return new Cards(new List<Card>
                              {
-                                 new Card(Suit.Clubs, Rank.Ace);
+                                 new Card(Suit.Clubs, Rank.Ace)
                              });
         }
     }
@@ -59,7 +59,7 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
 
         public bool IsSnapValid(Cards cardStack)
         {
-            return false;
+            return cardStack.CardAt(0).Rank == _callout.CurrentRank;
         }
     }
 }
