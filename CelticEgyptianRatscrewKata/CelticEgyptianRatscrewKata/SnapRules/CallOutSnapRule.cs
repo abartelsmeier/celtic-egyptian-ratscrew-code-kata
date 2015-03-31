@@ -3,11 +3,11 @@ using CelticEgyptianRatscrewKata.Game;
 
 namespace CelticEgyptianRatscrewKata.SnapRules
 {
-    public class CallOutSnapRule : ISnapRule
+    public class CalloutSnapRule : ISnapRule
     {
         private readonly ICallout _callout;
 
-        public CallOutSnapRule(ICallout callout)
+        public CalloutSnapRule(ICallout callout)
         {
             _callout = callout;
         }

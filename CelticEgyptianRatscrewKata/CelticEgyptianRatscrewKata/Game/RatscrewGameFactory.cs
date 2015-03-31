@@ -15,7 +15,7 @@ namespace CelticEgyptianRatscrewKata.Game
                 new DarkQueenSnapRule(),
                 new SandwichSnapRule(),
                 new StandardSnapRule(),
-                new CallOutSnapRule(callout)
+                new CalloutSnapRule(callout)
             };
 
             var penalties = new Penalties();

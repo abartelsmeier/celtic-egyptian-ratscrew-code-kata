@@ -14,7 +14,7 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
             var playerSequence = Substitute.For<IPlayerSequence>();
             var log = Substitute.For<ILog>();
             var callout = new LoggedCallout(playerSequence, log);
-            var snapRule = new CallOutSnapRule(callout);
+            var snapRule = new CalloutSnapRule(callout);
 
             bool result = snapRule.IsSnapValid(Cards.Empty());
 
@@ -27,7 +27,7 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
             var playerSequence = Substitute.For<IPlayerSequence>();
             var log = Substitute.For<ILog>();
             var callout = new LoggedCallout(playerSequence, log);
-            var snapRule = new CallOutSnapRule(callout);
+            var snapRule = new CalloutSnapRule(callout);
             callout.IncrementRank();//Increment Rank as in first player advance
             
             bool result = snapRule.IsSnapValid(SingleCardStack());
@@ -41,7 +41,7 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
             var playerSequence = Substitute.For<IPlayerSequence>();
             var log = Substitute.For<ILog>();
             var callout = new LoggedCallout(playerSequence, log);
-            var snapRule = new CallOutSnapRule(callout);
+            var snapRule = new CalloutSnapRule(callout);
             callout.IncrementRank();//Increment Rank as in first player advance
             
             bool result = snapRule.IsSnapValid(ThreeCardStack());
@@ -55,7 +55,7 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
             var playerSequence = Substitute.For<IPlayerSequence>();
             var log = Substitute.For<ILog>();
             var callout = new LoggedCallout(playerSequence, log);
-            var snapRule = new CallOutSnapRule(callout);
+            var snapRule = new CalloutSnapRule(callout);
             callout.IncrementRank();//Increment Rank as in first player advance
 
             callout.IncrementRank();

@@ -57,7 +57,7 @@
     <Compile Include="Game\Penalties.cs" />
     <Compile Include="Game\PlayerSequence.cs" />
     <Compile Include="ILog.cs" />
-    <Compile Include="SnapRules\CallOutSnapRule.cs" />
+    <Compile Include="SnapRules\CalloutSnapRule.cs" />
     <Compile Include="SnapRules\DarkQueenSnapRule.cs" />
     <Compile Include="GameSetup\Dealer.cs" />
     <Compile Include="GameSetup\IDealer.cs" />
