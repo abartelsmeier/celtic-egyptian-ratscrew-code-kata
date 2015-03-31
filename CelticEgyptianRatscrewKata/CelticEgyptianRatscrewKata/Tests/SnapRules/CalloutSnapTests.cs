@@ -32,7 +32,8 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
             var log = Substitute.For<ILog>();
             var callout = new LoggedCallout(playerSequence, log);
             var snapRule = new CallOutSnapRule(callout);
-
+            callout.IncrementRank();//Increment Rank as in first player advance
+            
             bool result = snapRule.IsSnapValid(SingleCardStack());
 
             Assert.IsTrue(result);
@@ -45,7 +46,8 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
             var log = Substitute.For<ILog>();
             var callout = new LoggedCallout(playerSequence, log);
             var snapRule = new CallOutSnapRule(callout);
-
+            callout.IncrementRank();//Increment Rank as in first player advance
+            
             bool result = snapRule.IsSnapValid(ThreeCardStack());
 
             Assert.IsTrue(result);
@@ -58,6 +60,7 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
             var log = Substitute.For<ILog>();
             var callout = new LoggedCallout(playerSequence, log);
             var snapRule = new CallOutSnapRule(callout);
+            callout.IncrementRank();//Increment Rank as in first player advance
 
             callout.IncrementRank();
             bool result = snapRule.IsSnapValid(ThreeCardStack());

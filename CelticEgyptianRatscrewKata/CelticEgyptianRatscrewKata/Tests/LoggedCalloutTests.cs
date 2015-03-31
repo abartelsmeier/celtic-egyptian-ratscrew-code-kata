@@ -26,6 +26,7 @@ namespace CelticEgyptianRatscrewKata.Tests
             var playerSequence = Substitute.For<IPlayerSequence>();
             var log = Substitute.For<ILog>();
             var callout = new LoggedCallout(playerSequence, log);
+            callout.IncrementRank();//Increment Rank as in first player advance
 
             callout.IncrementRank();
 
@@ -38,6 +39,7 @@ namespace CelticEgyptianRatscrewKata.Tests
             var playerSequence = Substitute.For<IPlayerSequence>();
             var log = Substitute.For<ILog>();
             var callout = new LoggedCallout(playerSequence, log);
+            callout.IncrementRank();//Increment Rank as in first player advance
 
             foreach (var rank in Enum.GetNames(typeof (Rank)))
             {
