@@ -59,7 +59,8 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
 
         public bool IsSnapValid(Cards cardStack)
         {
-            return cardStack.CardAt(0).Rank == _callout.CurrentRank;
+            if(cardStack.Any()) return cardStack.CardAt(0).Rank == _callout.CurrentRank;
+            return false;
         }
     }
 }
