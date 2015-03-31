@@ -9,21 +9,21 @@ using NUnit.Framework;
 
 namespace CelticEgyptianRatscrewKata.Tests
 {
-    class CalloutTests
+    class LoggedCalloutTests
     {
         [Test]
         public void CreateCallout()
         {
             var playerSequence = Substitute.For<IPlayerSequence>();
 
-            var callout = new Callout(playerSequence);
+            var callout = new LoggedCallout(playerSequence);
         }
 
         [Test]
         public void CreateCalloutAndIncrementRank()
         {
             var playerSequence = Substitute.For<IPlayerSequence>();
-            var callout = new Callout(playerSequence);
+            var callout = new LoggedCallout(playerSequence);
 
             callout.IncrementRank();
 
@@ -34,7 +34,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         public void CreateCalloutAndIncrementRankFullCycle()
         {
             var playerSequence = Substitute.For<IPlayerSequence>();
-            var callout = new Callout(playerSequence);
+            var callout = new LoggedCallout(playerSequence);
 
             foreach (var rank in Enum.GetNames(typeof (Rank)))
             {

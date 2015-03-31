@@ -1,11 +1,11 @@
 namespace CelticEgyptianRatscrewKata.Game
 {
-    public class Callout : IPlayerSequence
+    public class LoggedCallout : IPlayerSequence
     {
         private readonly IPlayerSequence _playerSequence;
         public Rank CurrentRank { get; private set; }
 
-        public Callout(IPlayerSequence playerSequence)
+        public LoggedCallout(IPlayerSequence playerSequence)
         {
             _playerSequence = playerSequence;
         }
