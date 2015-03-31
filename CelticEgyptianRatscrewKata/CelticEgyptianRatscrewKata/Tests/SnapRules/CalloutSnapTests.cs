@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CelticEgyptianRatscrewKata.SnapRules;
 using NSubstitute.Routing.Handlers;
 using NUnit.Framework;
 
@@ -15,15 +16,15 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
         {
             var snapRule = new CallOutSnapRule();
 
-            bool result = snapRule.IsValidSnap(Cards.Empty());
+            bool result = snapRule.IsSnapValid(Cards.Empty());
 
             Assert.IsFalse(result);
         }
     }
 
-    public class CallOutSnapRule
+    public class CallOutSnapRule : ISnapRule
     {
-        public bool IsValidSnap(Cards cards)
+        public bool IsSnapValid(Cards cardStack)
         {
             return false;
         }
