@@ -3,11 +3,13 @@ namespace CelticEgyptianRatscrewKata.Game
     public class LoggedCallout : IPlayerSequence
     {
         private readonly IPlayerSequence _playerSequence;
+        private readonly ILog _log;
         public Rank CurrentRank { get; private set; }
 
-        public LoggedCallout(IPlayerSequence playerSequence)
+        public LoggedCallout(IPlayerSequence playerSequence, ILog log)
         {
             _playerSequence = playerSequence;
+            _log = log;
         }
 
         public void IncrementRank()
