@@ -12,6 +12,7 @@ namespace CelticEgyptianRatscrewKata.Game
         {
             _playerSequence = playerSequence;
             _log = log;
+            CurrentRank = Rank.King;
         }
 
         public void IncrementRank()
@@ -32,8 +33,8 @@ namespace CelticEgyptianRatscrewKata.Game
 
         public void AdvanceToNextPlayer()
         {
-            _log.Log(String.Format("Callout: {0}", CurrentRank));
             IncrementRank();
+            _log.Log(String.Format("Callout: {0}", CurrentRank));
             _playerSequence.AdvanceToNextPlayer();
             
         }
