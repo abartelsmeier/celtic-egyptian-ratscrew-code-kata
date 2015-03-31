@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CelticEgyptianRatscrewKata.Game;
@@ -82,22 +81,6 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
                                  new Card(Suit.Clubs, Rank.Two),
                                  new Card(Suit.Clubs, Rank.Three)
                              });
-        }
-    }
-
-    public class CallOutSnapRule : ISnapRule
-    {
-        private readonly ICallout _callout;
-
-        public CallOutSnapRule(ICallout callout)
-        {
-            _callout = callout;
-        }
-
-        public bool IsSnapValid(Cards cardStack)
-        {
-            if(cardStack.Any()) return cardStack.CardAt(0).Rank == _callout.CurrentRank;
-            return false;
         }
     }
 }
