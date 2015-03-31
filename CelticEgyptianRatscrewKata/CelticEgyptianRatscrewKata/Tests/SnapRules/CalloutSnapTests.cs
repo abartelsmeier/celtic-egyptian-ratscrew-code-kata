@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CelticEgyptianRatscrewKata.Game;
 using CelticEgyptianRatscrewKata.SnapRules;
+using NSubstitute;
 using NSubstitute.Routing.Handlers;
 using NUnit.Framework;
 
@@ -14,7 +16,10 @@ namespace CelticEgyptianRatscrewKata.Tests.SnapRules
         [Test]
         public void ReturnsFalseOnEmptyStack()
         {
-            var snapRule = new CallOutSnapRule();
+            var playerSequence = Substitute.For<IPlayerSequence>();
+            var log = Substitute.For<ILog>();
+            var callout = new LoggedCallout(playerSequence, log);
+            var snapRule = new CallOutSnapRule(callout);
 
             bool result = snapRule.IsSnapValid(Cards.Empty());
 
