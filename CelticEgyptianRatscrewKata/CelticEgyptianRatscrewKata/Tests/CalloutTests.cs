@@ -22,7 +22,8 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void CreateCalloutAndIncrementRank()
         {
-            var callout = new Callout();
+            var playerSequence = Substitute.For<IPlayerSequence>();
+            var callout = new Callout(playerSequence);
 
             callout.IncrementRank();
 
@@ -32,7 +33,8 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void CreateCalloutAndIncrementRankFullCycle()
         {
-            var callout = new Callout();
+            var playerSequence = Substitute.For<IPlayerSequence>();
+            var callout = new Callout(playerSequence);
 
             foreach (var rank in Enum.GetNames(typeof (Rank)))
             {
@@ -45,7 +47,13 @@ namespace CelticEgyptianRatscrewKata.Tests
 
     public class Callout
     {
+        private readonly IPlayerSequence _playerSequence;
         public Rank CurrentRank { get; private set; }
+
+        public Callout(IPlayerSequence playerSequence)
+        {
+            _playerSequence = playerSequence;
+        }
 
         public void IncrementRank()
         {
