@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Card.cs" />
+    <Compile Include="Game\ICallout.cs" />
     <Compile Include="Game\LoggedCallout.cs" />
     <Compile Include="Game\IGameController.cs" />
     <Compile Include="Game\IGameFactory.cs" />

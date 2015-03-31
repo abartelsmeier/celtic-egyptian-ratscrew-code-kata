@@ -1,6 +1,6 @@
 namespace CelticEgyptianRatscrewKata.Game
 {
-    public class LoggedCallout : IPlayerSequence
+    public class LoggedCallout : IPlayerSequence, ICallout
     {
         private readonly IPlayerSequence _playerSequence;
         private readonly ILog _log;
@@ -12,7 +12,7 @@ namespace CelticEgyptianRatscrewKata.Game
             _log = log;
         }
 
-        public void IncrementRank()
+        private void IncrementRank()
         {
             CurrentRank++;
             if (CurrentRank > Rank.King) ResetRank();
