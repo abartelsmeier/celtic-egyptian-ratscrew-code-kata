@@ -24,6 +24,19 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             Assert.That(callout.CurrentRank, Is.EqualTo(Rank.Two));
         }
+
+        [Test]
+        public void CreateCalloutInstanceAndIncrementRankFullCycle()
+        {
+            var callout = new Callout();
+
+            foreach (var rank in Enum.GetNames(typeof (Rank)))
+            {
+                callout.IncrementRank();
+            }
+
+            Assert.That(callout.CurrentRank, Is.EqualTo(Rank.Ace));
+        }
     }
 
     public class Callout
